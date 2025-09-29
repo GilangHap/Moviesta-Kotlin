@@ -1,61 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp">
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:strokeWidth="0dp"
+    app:cardBackgroundColor="@color/card_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Poster Film -->
-        <ImageView
-            android:id="@+id/img_poster"
+        <!-- Poster Container with Overlay -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:background="@android:color/darker_gray"
-            android:contentDescription="@string/poster_film" />
+            android:layout_height="280dp">
 
+            <!-- Poster Film -->
+            <ImageView
+                android:id="@+id/img_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="@color/image_placeholder"
+                android:transitionName="poster_transition"
+                android:contentDescription="@string/poster_film" />
+
+            <!-- Gradient Overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/gradient_overlay"/>
+
+            <!-- Rating Badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:background="@drawable/rating_badge_background"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_star_yellow"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/tv_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="8.5"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Content Area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="16dp">
 
             <!-- Judul Film -->
             <TextView
                 android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Judul Film Sangat Panjang dan Keren"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textColor="@android:color/black"/>
-
-            <!-- Rating -->
-            <TextView
-                android:id="@+id/tv_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="⭐ 8.5/10"
-                android:textSize="14sp"
-                android:layout_marginTop="4dp"
-                android:drawablePadding="4dp"
-                android:textColor="#FFC107"
-                android:drawableStart="@drawable/ic_star_yellow"/>
-
-            <!-- Sinopsis Singkat (Dihapus karena mengganggu tampilan grid)
-                 Anda bisa mengaktifkannya lagi jika ingin 1 kolom. -->
+                android:textColor="@color/text_primary"
+                android:lineSpacingMultiplier="1.2"/>
 
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

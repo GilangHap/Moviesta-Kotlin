@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Existing colors -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,11 +8,23 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-
-    <!-- This is the missing color -->
     <color name="colorAccent">#03DAC5</color>
 
+    <!-- Modern Color Palette -->
+    <color name="primary_color">#6366F1</color>
+    <color name="secondary_color">#8B5CF6</color>
+    <color name="accent_color">#EC4899</color>
+    <color name="background_color">#F8FAFC</color>
+    <color name="surface_color">#FFFFFF</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="search_icon_color">#94A3B8</color>
+    <color name="fab_color">#6366F1</color>
+    <color name="image_placeholder">#E2E8F0</color>
+    
+    <!-- Card colors for light mode -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_surface">#F8FAFC</color>
 </resources>

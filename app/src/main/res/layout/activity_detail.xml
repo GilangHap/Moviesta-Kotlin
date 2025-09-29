@@ -12,15 +12,17 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.Material3.Dark">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@drawable/gradient_toolbar_background"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/toolbar"
+            app:titleCollapseMode="scale"
+            app:expandedTitleTextAppearance="@style/ToolbarTitleStyle">
 
             <!-- Background Poster Besar -->
             <ImageView
@@ -29,12 +31,14 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/poster_film"
-                app:layout_collapseMode="parallax" />
+                android:transitionName="poster_transition"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
 
-            <!-- Shading untuk teks agar tetap terbaca -->
+            <!-- Gradient overlay yang lebih elegan -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/gradient_shadow_bottom" />
 
@@ -53,6 +57,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_color"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -67,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
-                android:textColor="@color/black"
+                android:textColor="@color/text_primary"
                 android:textStyle="bold"
                 tools:text="Nama Film Keren dan Panjang"/>
 
@@ -83,6 +88,89 @@
                 android:drawableStart="@drawable/ic_star_yellow"
                 tools:text="8.5/10"/>
 
+            <!-- Genre Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genre"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- RecyclerView untuk Genre Chips -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:clipToPadding="false" />
+
+            </LinearLayout>
+
+            <!-- Release Date dan Runtime -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Rilis"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_release_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_primary"
+                        tools:text="2023-12-15"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Durasi"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_secondary"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_runtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_primary"
+                        tools:text="120 menit"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <!-- Sinopsis Lengkap -->
             <TextView
                 android:id="@+id/tv_sinopsis_label"
@@ -91,6 +179,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Sinopsis"
                 android:textSize="20sp"
+                android:textColor="@color/text_primary"
                 android:textStyle="bold"/>
 
             <TextView
@@ -99,6 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="16sp"
+                android:textColor="@color/text_secondary"
                 android:lineSpacingExtra="4dp"
                 tools:text="Ini adalah sinopsis lengkap dari film yang akan menceritakan perjalanan karakter utama yang penuh liku-liku dan kejutan."/>
 
@@ -110,6 +200,7 @@
                 android:layout_marginTop="32dp"
                 android:text="Pemeran Utama"
                 android:textSize="20sp"
+                android:textColor="@color/text_primary"
                 android:textStyle="bold"/>
 
             <!-- RecyclerView Horizontal untuk Daftar Aktor -->
@@ -125,6 +216,77 @@
                 tools:orientation="horizontal"
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_cast"/>
+
+            <!-- Label Film Serupa -->
+            <TextView
+                android:id="@+id/tv_recommendations_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Film Serupa"
+                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"/>
+
+            <!-- RecyclerView Horizontal untuk Film Rekomendasi -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_recommendations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:paddingBottom="24dp"
+                android:orientation="horizontal"
+                tools:itemCount="5"
+                tools:orientation="horizontal"
+                tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_recommendation"/>
+
+            <!-- Loading State untuk Rekomendasi -->
+            <LinearLayout
+                android:id="@+id/layout_recommendations_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:visibility="gone"
+                android:padding="16dp">
+
+                <ProgressBar
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Memuat rekomendasi..."
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"/>
+
+            </LinearLayout>
+
+            <!-- Empty State untuk Rekomendasi -->
+            <LinearLayout
+                android:id="@+id/layout_no_recommendations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tidak ada rekomendasi film"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:textStyle="italic"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

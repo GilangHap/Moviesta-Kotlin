@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="300dp"
+    android:viewportWidth="200"
+    android:viewportHeight="300">
+
+    <!-- Background -->
+    <path
+        android:pathData="M0,0h200v300h-200z"
+        android:fillColor="#E2E8F0"/>
+
+    <!-- Movie icon -->
+    <path
+        android:pathData="M50,120h100v60h-100z"
+        android:fillColor="#94A3B8"/>
+
+    <!-- Film strip holes -->
+    <path
+        android:pathData="M40,130h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+    <path
+        android:pathData="M40,150h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+    <path
+        android:pathData="M40,170h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+
+    <path
+        android:pathData="M152,130h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+    <path
+        android:pathData="M152,150h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+    <path
+        android:pathData="M152,170h8v8h-8z"
+        android:fillColor="#FFFFFF"/>
+
+    <!-- Play icon -->
+    <path
+        android:pathData="M85,140l20,10l-20,10z"
+        android:fillColor="#FFFFFF"/>
+
+</vector>

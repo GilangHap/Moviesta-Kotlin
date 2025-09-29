@@ -19,14 +19,36 @@ data class CreditsResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("cast") val cast: List<Cast>
 )
+
+// Model untuk Detail Film (dengan genre)
+@Parcelize
+data class FilmDetail(
+    val id: Int,
+    val title: String,
+    @SerializedName("overview") val overview: String?,
+    @SerializedName("poster_path") val posterPath: String?,
+    @SerializedName("backdrop_path") val backdropPath: String?,
+    @SerializedName("vote_average") val voteAverage: Double,
+    @SerializedName("release_date") val releaseDate: String?,
+    @SerializedName("runtime") val runtime: Int?,
+    val genres: List<Genre>
+) : Parcelable {
+    // Computed properties
+    val rating: Double get() = voteAverage
+    val sinopsis: String? get() = overview
+}
+
 @Parcelize // Anotasi wajib
 data class Film(
     val id: Int,
     val title: String,
     @SerializedName("overview") val sinopsis: String?,
     @SerializedName("poster_path") val posterPath: String?,
-    @SerializedName("vote_average") val rating: Double
-) : Parcelable
+    @SerializedName("vote_average") val voteAverage: Double
+) : Parcelable {
+    // Computed property untuk rating (agar tidak break existing code)
+    val rating: Double get() = voteAverage
+}
 
 // Model untuk respons utama dari API (daftar film)
 data class FilmResponse(
