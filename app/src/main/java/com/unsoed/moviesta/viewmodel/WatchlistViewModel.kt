@@ -49,7 +49,7 @@ class WatchlistViewModel(application: Application) : AndroidViewModel(applicatio
             try {
                 _isLoading.value = true
                 repository.addToWatchlist(film)
-                _successMessage.value = "${film.title} ditambahkan ke Watchlist"
+                _successMessage.value = "${film.safeTitle} ditambahkan ke Watchlist"
                 _errorMessage.value = null
             } catch (e: Exception) {
                 _errorMessage.value = "Gagal menambahkan ke watchlist: ${e.message}"
@@ -114,9 +114,9 @@ class WatchlistViewModel(application: Application) : AndroidViewModel(applicatio
                 _isLoading.value = true
                 val isAdded = repository.toggleWatchlist(film)
                 _successMessage.value = if (isAdded) {
-                    "${film.title} ditambahkan ke Watchlist"
+                    "${film.safeTitle} ditambahkan ke Watchlist"
                 } else {
-                    "${film.title} dihapus dari Watchlist"
+                    "${film.safeTitle} dihapus dari Watchlist"
                 }
                 _errorMessage.value = null
             } catch (e: Exception) {

@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Existing colors -->
+    <!-- NEW COLOR PALETTE -->
+    <color name="primary">#95122C</color>
+    <color name="secondary">#FF9408</color>
+    <color name="tertiary">#CA3F16</color>
+    <color name="background">#100C08</color>
+    <color name="surface">#F3F4F5</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_background">#F3F4F5</color>
+    <color name="on_surface">#100C08</color>
+    
+    <!-- Theme Colors -->
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primary</color>
+    <color name="colorAccent">@color/secondary</color>
+    
+    <!-- Modern Color Palette - Updated -->
+    <color name="primary_color">@color/primary</color>
+    <color name="secondary_color">@color/secondary</color>
+    <color name="accent_color">@color/tertiary</color>
+    <color name="background_color">@color/background</color>
+    <color name="surface_color">@color/surface</color>
+    <color name="text_primary">@color/on_surface</color>
+    <color name="text_secondary">#666666</color>
+    <color name="search_icon_color">#888888</color>
+    <color name="fab_color">@color/secondary</color>
+    <color name="image_placeholder">@color/surface</color>
+    
+    <!-- Card colors -->
+    <color name="card_background">@color/surface</color>
+    <color name="card_surface">@color/surface</color>
+    
+    <!-- Status colors with theme adaptation -->
+    <color name="success_color">#4CAF50</color>
+    <color name="error_color">@color/tertiary</color>
+    <color name="warning_color">@color/secondary</color>
+    <color name="info_color">@color/primary</color>
+    
+    <!-- Bottom Navigation Colors - Updated -->
+    <color name="nav_icon_selected">@color/primary</color>
+    <color name="nav_icon_unselected">#888888</color>
+    <color name="nav_text_selected">@color/primary</color>
+    <color name="nav_text_unselected">#888888</color>
+    <color name="nav_background">@color/surface</color>
+    
+    <!-- Genre Colors - Updated with new palette variations -->
+    <color name="genre_action">@color/tertiary</color>
+    <color name="genre_adventure">@color/primary</color>
+    <color name="genre_animation">@color/secondary</color>
+    <color name="genre_comedy">#FF6B35</color>
+    <color name="genre_drama">#8B2635</color>
+    <color name="genre_horror">#5D1A1D</color>
+    <color name="genre_thriller">#A0522D</color>
+    <color name="genre_romance">#E91E63</color>
+    <color name="genre_scifi">#4A5568</color>
+    <color name="genre_fantasy">#9B59B6</color>
+    
+    <!-- Legacy colors for compatibility -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,29 +64,4 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-
-    <!-- Modern Color Palette -->
-    <color name="primary_color">#6366F1</color>
-    <color name="secondary_color">#8B5CF6</color>
-    <color name="accent_color">#EC4899</color>
-    <color name="background_color">#F8FAFC</color>
-    <color name="surface_color">#FFFFFF</color>
-    <color name="text_primary">#0F172A</color>
-    <color name="text_secondary">#64748B</color>
-    <color name="search_icon_color">#94A3B8</color>
-    <color name="fab_color">#6366F1</color>
-    <color name="image_placeholder">#E2E8F0</color>
-    
-    <!-- Card colors for light mode -->
-    <color name="card_background">#FFFFFF</color>
-    <color name="card_surface">#F8FAFC</color>
-    
-    <!-- Additional colors for watchlist -->
-    <color name="success_color">#10B981</color>
-    <color name="error_color">#EF4444</color>
-    <color name="warning_color">#F59E0B</color>
-    <color name="info_color">#3B82F6</color>
 </resources>

@@ -4,6 +4,9 @@ import com.unsoed.moviesta.model.FilmResponse
 import com.unsoed.moviesta.model.FilmDetail
 import com.unsoed.moviesta.model.CreditsResponse
 import com.unsoed.moviesta.model.GenreResponse
+import com.unsoed.moviesta.model.ActorResponse
+import com.unsoed.moviesta.model.ActorDetail
+import com.unsoed.moviesta.model.ActorCreditsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -18,13 +21,15 @@ interface TmdbApiService {
 
     @GET("movie/popular")
     suspend fun getPopularFilms(
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int = 1
     ): FilmResponse
 
     @GET("search/movie")
     suspend fun searchFilms(
         @Query("api_key") apiKey: String = API_KEY,
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Query("page") page: Int = 1
     ): FilmResponse
 
     @GET("movie/{movie_id}")
@@ -89,4 +94,30 @@ interface TmdbApiService {
     suspend fun getTrendingFilms(
         @Query("api_key") apiKey: String = API_KEY
     ): FilmResponse
+
+    // Actor endpoints
+    @GET("person/popular")
+    suspend fun getPopularActors(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int = 1
+    ): ActorResponse
+
+    @GET("search/person")
+    suspend fun searchActors(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("query") query: String,
+        @Query("page") page: Int = 1
+    ): ActorResponse
+
+    @GET("person/{person_id}")
+    suspend fun getActorDetail(
+        @Path("person_id") personId: Int,
+        @Query("api_key") apiKey: String = API_KEY
+    ): ActorDetail
+
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getActorMovieCredits(
+        @Path("person_id") personId: Int,
+        @Query("api_key") apiKey: String = API_KEY
+    ): ActorCreditsResponse
 }

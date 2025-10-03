@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.button.MaterialButton
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
@@ -23,6 +22,7 @@ import com.unsoed.moviesta.viewmodel.FilmViewModelFactory
 import com.unsoed.moviesta.view.FilmAdapter
 import com.unsoed.moviesta.view.CategoryAdapter
 import com.unsoed.moviesta.view.Category
+import com.unsoed.moviesta.view.CustomBottomNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var categoriesRecyclerView: RecyclerView
     private lateinit var searchView: SearchView
-    private lateinit var fabFilter: FloatingActionButton
+    private lateinit var bottomNavigation: CustomBottomNavigation
     
     // Empty state views
     private lateinit var layoutEmptyState: LinearLayout
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Setup Toolbar
+        // Setup Toolbar (without ActionBar)
         val toolbar: MaterialToolbar = findViewById(R.id.toolbar_main)
-        setSupportActionBar(toolbar)
+        // setSupportActionBar(toolbar) // Removed - using NoActionBar theme
 
         // Initialize views
         initViews()
@@ -80,6 +80,9 @@ class MainActivity : AppCompatActivity() {
 
         // Setup Search
         setupSearch()
+        
+        // Setup Bottom Navigation
+        setupBottomNavigation()
 
         // Setup retry button
         btnRetry.setOnClickListener {
@@ -102,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_view_films)
         categoriesRecyclerView = findViewById(R.id.recycler_view_categories)
         searchView = findViewById(R.id.search_view)
-        fabFilter = findViewById(R.id.fab_filter)
+        bottomNavigation = findViewById(R.id.bottom_navigation)
         layoutEmptyState = findViewById(R.id.layout_empty_state)
         layoutLoading = findViewById(R.id.layout_loading)
         tvSectionTitle = findViewById(R.id.tv_section_title)
@@ -313,5 +316,56 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+    
+    private fun setupBottomNavigation() {
+        bottomNavigation.setOnTabSelectedListener { tab ->
+            when (tab) {
+                CustomBottomNavigation.NavigationTab.GENRE -> {
+                    navigateToGenre()
+                }
+                CustomBottomNavigation.NavigationTab.ACTOR -> {
+                    navigateToActor()
+                }
+                CustomBottomNavigation.NavigationTab.HOME -> {
+                    navigateToHome()
+                }
+                CustomBottomNavigation.NavigationTab.HISTORY -> {
+                    navigateToHistory()
+                }
+                CustomBottomNavigation.NavigationTab.PROFILE -> {
+                    navigateToProfile()
+                }
+            }
+        }
+    }
+    
+    private fun navigateToGenre() {
+        val intent = Intent(this, GenreActivity::class.java)
+        startActivity(intent)
+    }
+    
+    private fun navigateToActor() {
+        val intent = Intent(this, ActorActivity::class.java)
+        startActivity(intent)
+    }
+    
+    private fun navigateToHome() {
+        // Already on home, refresh data
+        searchView.setQuery("", false)
+        currentQuery = ""
+        isSearchMode = false
+        showLoading()
+        filmViewModel.loadPopularFilms()
+    }
+    
+    private fun navigateToHistory() {
+        // TODO: Implementasi navigasi ke halaman history
+        android.widget.Toast.makeText(this, "History page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
+    }
+    
+    private fun navigateToProfile() {
+        // TODO: Implementasi navigasi ke halaman profile
+        android.widget.Toast.makeText(this, "Profile page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
     }
 }

@@ -28,6 +28,36 @@
             android:label="My Watchlist"
             android:parentActivityName=".MainActivity" />
 
+        <!-- GenreActivity -->
+        <activity
+            android:name=".GenreActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Movie Genres"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- FilmByGenreActivity -->
+        <activity
+            android:name=".FilmByGenreActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".GenreActivity" />
+
+        <!-- ActorActivity -->
+        <activity
+            android:name=".ActorActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Popular Actors"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- FilmsByActorActivity -->
+        <activity
+            android:name=".FilmsByActorActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ActorActivity" />
+
         <!-- MainActivity menggunakan NoActionBar karena kita menggunakan Toolbar kustom -->
         <activity
             android:name=".MainActivity"

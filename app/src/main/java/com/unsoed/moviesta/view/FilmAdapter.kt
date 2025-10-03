@@ -31,14 +31,14 @@ class FilmAdapter(private var films: List<Film>) :
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
         val film = films[position]
 
-        holder.tvTitle.text = film.title
+        holder.tvTitle.text = film.safeTitle
         holder.tvRating.text = String.format("%.1f", film.rating)
 
         // Load poster image with Coil
         val posterUrl = "https://image.tmdb.org/t/p/w500${film.posterPath ?: ""}"
         
         // Debug: print URL
-        println("Loading poster for ${film.title}: $posterUrl")
+        println("Loading poster for ${film.safeTitle}: $posterUrl")
         
         holder.imgPoster.load(posterUrl) {
             placeholder(R.drawable.placeholder_image)

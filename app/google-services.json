@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "164808964353",
+    "project_id": "moviesta-6ea82",
+    "storage_bucket": "moviesta-6ea82.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164808964353:android:7da4249b28938a76700300",
+        "android_client_info": {
+          "package_name": "com.unsoed.moviesta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIJDp6ReF4iYPKoP1UOx8i3SFX4ZKO1Yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

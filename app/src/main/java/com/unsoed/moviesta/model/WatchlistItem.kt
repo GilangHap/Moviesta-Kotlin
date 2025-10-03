@@ -27,10 +27,10 @@ data class WatchlistItem(
         fun fromFilm(film: Film): WatchlistItem {
             return WatchlistItem(
                 id = film.id,
-                title = film.title,
+                title = film.safeTitle,
                 overview = film.sinopsis,
                 posterPath = film.posterPath,
-                voteAverage = film.voteAverage,
+                voteAverage = film.rating, // Use computed property that handles null
                 releaseDate = null // Film model doesn't have release date
             )
         }
@@ -39,10 +39,10 @@ data class WatchlistItem(
         fun fromFilmDetail(filmDetail: FilmDetail): WatchlistItem {
             return WatchlistItem(
                 id = filmDetail.id,
-                title = filmDetail.title,
+                title = filmDetail.safeTitle, // Use safeTitle instead of nullable title
                 overview = filmDetail.overview,
                 posterPath = filmDetail.posterPath,
-                voteAverage = filmDetail.voteAverage,
+                voteAverage = filmDetail.rating, // Use computed property that handles null
                 releaseDate = filmDetail.releaseDate
             )
         }

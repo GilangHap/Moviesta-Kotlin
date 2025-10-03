@@ -24,30 +24,34 @@ data class CreditsResponse(
 @Parcelize
 data class FilmDetail(
     val id: Int,
-    val title: String,
+    @SerializedName("title") val title: String?,
     @SerializedName("overview") val overview: String?,
     @SerializedName("poster_path") val posterPath: String?,
     @SerializedName("backdrop_path") val backdropPath: String?,
-    @SerializedName("vote_average") val voteAverage: Double,
+    @SerializedName("vote_average") val voteAverage: Double?,
     @SerializedName("release_date") val releaseDate: String?,
     @SerializedName("runtime") val runtime: Int?,
     val genres: List<Genre>
 ) : Parcelable {
     // Computed properties
-    val rating: Double get() = voteAverage
+    val rating: Double get() = voteAverage ?: 0.0
     val sinopsis: String? get() = overview
+    val safeTitle: String get() = title ?: "Unknown Title"
 }
 
 @Parcelize // Anotasi wajib
 data class Film(
     val id: Int,
-    val title: String,
+    @SerializedName("title") val title: String?,
     @SerializedName("overview") val sinopsis: String?,
     @SerializedName("poster_path") val posterPath: String?,
-    @SerializedName("vote_average") val voteAverage: Double
+    @SerializedName("vote_average") val voteAverage: Double?
 ) : Parcelable {
     // Computed property untuk rating (agar tidak break existing code)
-    val rating: Double get() = voteAverage
+    val rating: Double get() = voteAverage ?: 0.0
+    
+    // Computed property untuk title yang aman
+    val safeTitle: String get() = title ?: "Unknown Title"
 }
 
 // Model untuk respons utama dari API (daftar film)

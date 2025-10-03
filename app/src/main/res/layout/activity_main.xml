@@ -5,33 +5,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
-    <!-- App Bar Layout -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
+    <!-- Simplified Toolbar -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.Material3.Dark"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_main"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient_toolbar_background"
-            app:title="🎬 Moviesta"
-            app:titleTextColor="@android:color/white"
-            app:titleTextAppearance="@style/ToolbarTitleStyle" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient_toolbar_background"
+        app:title="🎬 Moviesta"
+        app:titleTextAppearance="@style/ToolbarTitleStyle"
+        app:titleTextColor="@color/on_background" />
 
     <!-- Main Content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +39,7 @@
                 android:text="Discover Amazing Movies"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/on_background"
                 android:layout_marginBottom="4dp"/>
 
             <TextView
@@ -54,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Find your next favorite film"
                 android:textSize="16sp"
-                android:textColor="@color/text_secondary"
+                android:textColor="@color/on_background"
                 android:layout_marginBottom="20dp"/>
 
             <!-- Modern Search Container -->
@@ -65,7 +58,7 @@
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:strokeWidth="0dp"
-                app:cardBackgroundColor="@color/card_background">
+                app:cardBackgroundColor="@color/surface">
 
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view"
@@ -120,7 +113,7 @@
                     android:layout_marginEnd="4dp"
                     android:text="🔥 Trending"
                     android:textSize="12sp"
-                    app:backgroundTint="@color/accent_color"
+                    app:backgroundTint="@color/tertiary"
                     app:cornerRadius="12dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -133,7 +126,7 @@
                     android:layout_marginEnd="4dp"
                     android:text="⭐ Top Rated"
                     android:textSize="12sp"
-                    app:backgroundTint="@color/secondary_color"
+                    app:backgroundTint="@color/secondary"
                     app:cornerRadius="12dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -145,7 +138,7 @@
                     android:layout_marginStart="4dp"
                     android:text="🎬 Upcoming"
                     android:textSize="12sp"
-                    app:backgroundTint="@color/primary_color"
+                    app:backgroundTint="@color/primary"
                     app:cornerRadius="12dp" />
 
             </LinearLayout>
@@ -250,15 +243,11 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Floating Action Button -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_filter"
-        android:layout_width="wrap_content"
+    <!-- Custom Bottom Navigation -->
+    <com.unsoed.moviesta.view.CustomBottomNavigation
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_filter"
-        app:tint="@android:color/white"
-        app:backgroundTint="@color/fab_color"/>
+        android:layout_gravity="bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

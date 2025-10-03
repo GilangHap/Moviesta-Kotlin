@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.chip.Chip
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tv_genre_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="4dp"
-    android:textSize="12sp"
-    android:textColor="@android:color/white"
-    app:chipBackgroundColor="@color/secondary_color"
-    app:chipCornerRadius="16dp"
-    app:chipStrokeWidth="0dp"
-    app:chipMinHeight="32dp"
-    app:textStartPadding="12dp"
-    app:textEndPadding="12dp"
-    android:checkable="false"
-    android:clickable="false"
-    android:focusable="false" />
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/genre_action"
+    app:strokeWidth="2dp"
+    app:strokeColor="@color/on_primary">
+
+    <!-- Gradient Overlay untuk depth -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/genre_card_gradient"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textGenreName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action"
+            android:textColor="@color/on_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:shadowColor="#66000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3" />
+
+        <!-- Optional icon for genre -->
+        <View
+            android:layout_width="24dp"
+            android:layout_height="2dp"
+            android:background="@color/on_primary"
+            android:layout_marginTop="8dp"
+            android:alpha="0.7" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

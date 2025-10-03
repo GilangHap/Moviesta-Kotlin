@@ -5,24 +5,24 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar // Diperlukan untuk Toolbar
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.google.android.material.appbar.CollapsingToolbarLayout // Diperlukan untuk CollapsingToolbar
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.model.FilmDetail
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
-import com.unsoed.moviesta.view.RecommendationAdapter
 import com.unsoed.moviesta.view.GenreAdapter
+import com.unsoed.moviesta.view.GenreChipAdapter
+import com.unsoed.moviesta.view.RecommendationAdapter
 import com.unsoed.moviesta.viewmodel.WatchlistViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +39,7 @@ class DetailActivity : AppCompatActivity() {
 
     // Deklarasi komponen untuk Cast, Genres, dan Recommendations
     private lateinit var castAdapter: CastAdapter
-    private lateinit var genreAdapter: GenreAdapter
+    private lateinit var genreAdapter: GenreChipAdapter
     private lateinit var recommendationAdapter: RecommendationAdapter
     private lateinit var repository: FilmRepository
     private lateinit var recyclerViewCast: RecyclerView
@@ -87,7 +87,7 @@ class DetailActivity : AppCompatActivity() {
 
         // 4. Setup RecyclerView untuk Genre
         recyclerViewGenres = findViewById(R.id.recycler_view_genres)
-        genreAdapter = GenreAdapter(emptyList())
+        genreAdapter = GenreChipAdapter(emptyList())
         recyclerViewGenres.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewGenres.adapter = genreAdapter
 
@@ -155,10 +155,10 @@ class DetailActivity : AppCompatActivity() {
                     val collapsingToolbar: CollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
                     // Mengatur judul CollapsingToolbar
-                    collapsingToolbar.title = filmDetail.title
+                    collapsingToolbar.title = filmDetail.safeTitle
 
-                    // Mengisi data ke View
-                    tvTitle.text = filmDetail.title
+                    // Update UI dengan data dari API
+                    tvTitle.text = filmDetail.safeTitle
                     tvRating.text = "⭐ ${String.format("%.1f", filmDetail.rating)} / 10"
                     tvSinopsis.text = filmDetail.sinopsis ?: "Sinopsis tidak tersedia"
 
@@ -215,8 +215,8 @@ class DetailActivity : AppCompatActivity() {
                         val tvSinopsis: TextView = findViewById(R.id.tv_sinopsis_detail)
                         val collapsingToolbar: CollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
-                        collapsingToolbar.title = fallbackFilm.title
-                        tvTitle.text = fallbackFilm.title
+                        collapsingToolbar.title = fallbackFilm.safeTitle
+                        tvTitle.text = fallbackFilm.safeTitle
                         tvRating.text = "⭐ ${String.format("%.1f", fallbackFilm.rating)} / 10"
                         tvSinopsis.text = fallbackFilm.sinopsis ?: "Sinopsis tidak tersedia"
 

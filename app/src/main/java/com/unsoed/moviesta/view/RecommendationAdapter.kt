@@ -31,7 +31,7 @@ class RecommendationAdapter(private var films: List<Film>) :
     override fun onBindViewHolder(holder: RecommendationViewHolder, position: Int) {
         val film = films[position]
 
-        holder.tvTitle.text = film.title
+        holder.tvTitle.text = film.safeTitle
         holder.tvRating.text = String.format("%.1f", film.rating)
 
         // Load poster image

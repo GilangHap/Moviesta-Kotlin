@@ -16,6 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.unsoed.moviesta.model.WatchlistItem
 import com.unsoed.moviesta.view.WatchlistAdapter
+import com.unsoed.moviesta.view.CustomBottomNavigation
 import com.unsoed.moviesta.viewmodel.WatchlistViewModel
 
 class WatchlistActivity : AppCompatActivity() {
@@ -35,6 +36,7 @@ class WatchlistActivity : AppCompatActivity() {
     private lateinit var btnSortDate: MaterialButton
     private lateinit var btnSortTitle: MaterialButton
     private lateinit var btnSortRating: MaterialButton
+    private lateinit var bottomNavigation: CustomBottomNavigation
     
     // Data
     private var currentWatchlistItems = listOf<WatchlistItem>()
@@ -48,6 +50,7 @@ class WatchlistActivity : AppCompatActivity() {
         setupViewModel()
         setupObservers()
         setupClickListeners()
+        setupBottomNavigation()
     }
 
     private fun setupViews() {
@@ -62,6 +65,7 @@ class WatchlistActivity : AppCompatActivity() {
         btnSortDate = findViewById(R.id.btn_sort_date)
         btnSortTitle = findViewById(R.id.btn_sort_title)
         btnSortRating = findViewById(R.id.btn_sort_rating)
+        bottomNavigation = findViewById(R.id.bottom_navigation)
         
         // Setup toolbar
         setSupportActionBar(toolbar)
@@ -293,6 +297,34 @@ class WatchlistActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setupBottomNavigation() {
+        // Set current tab to history since this is the watchlist
+        bottomNavigation.selectTab(CustomBottomNavigation.NavigationTab.HISTORY)
+        
+        bottomNavigation.setOnTabSelectedListener { tab ->
+            when (tab) {
+                CustomBottomNavigation.NavigationTab.GENRE -> {
+                    startActivity(Intent(this, GenreActivity::class.java))
+                    finish()
+                }
+                CustomBottomNavigation.NavigationTab.ACTOR -> {
+                    startActivity(Intent(this, ActorActivity::class.java))
+                    finish()
+                }
+                CustomBottomNavigation.NavigationTab.HOME -> {
+                    finish() // Go back to MainActivity
+                }
+                CustomBottomNavigation.NavigationTab.HISTORY -> {
+                    // Already on history/watchlist page
+                }
+                CustomBottomNavigation.NavigationTab.PROFILE -> {
+                    // TODO: Navigate to profile page
+                    android.widget.Toast.makeText(this, "Profile page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
