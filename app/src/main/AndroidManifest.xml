@@ -20,6 +20,14 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <!-- WatchlistActivity -->
+        <activity
+            android:name=".WatchlistActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="My Watchlist"
+            android:parentActivityName=".MainActivity" />
+
         <!-- MainActivity menggunakan NoActionBar karena kita menggunakan Toolbar kustom -->
         <activity
             android:name=".MainActivity"

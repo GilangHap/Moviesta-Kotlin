@@ -1,0 +1,264 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 264241152 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3631), pid=13032, tid=17468
+#
+# JRE version:  (22.0.2+9) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (22.0.2+9-70, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djava.awt.headless=true -Djava.library.path=C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ACER\bin;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;D:\laragon\bin\php\php-8.3.16-Win32-vs16-x64;C:\laragon\bin\php\php-8.4.2;C:\Program Files\Common Files\Oracle\Java\javapath;D:\oracle\dbhomeXE\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\ProgramData\ComposerSetup\bin;C:\php;D:\xampp\php;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\runtime\win64;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\bin;C:\Program Files\swipl\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0;%SYSTEMROOT%\System32\OpenSSH;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;C:\laragon\bin;C:\laragon\bin\apache\httpd-2.4.54-win64-VS16\bin;C:\laragon\bin\code;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\go\bin;C:\laragon\bin\laragon\utils;C:\laragon\bin\mysql\mysql-8.0.40-winx64\bin;C:\laragon\bin\nginx\nginx-1.22.0;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v22.12.0-win-x64;C:\laragon\bin\notepad++;C:\laragon\bin\php\php-8.4.2;C:\laragon\bin\pocketbase;C:\laragon\bin\postgresql\postgresql-14.5-1\bin;C:\laragon\bin\python\python-3.10;C:\laragon\bin\python\python-3.10\Scripts;C:\laragon\bin\redis\redis-x64-5.0.14.1;C:\laragon\bin\telnet;C:\laragon\bin\yarn\bin;C:\laragon\usr\bin;C:\Users\ACER\App-Dorg.gradle.internal.worker.tmpdir=D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\tmp\testReleaseUnitTest\work --add-opens=java.base/java.io=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=ID -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 2'
+
+Host: 12th Gen Intel(R) Core(TM) i5-12450H, 12 cores, 15G,  Windows 11 , 64 bit Build 26100 (10.0.26100.5074)
+Time: Mon Sep 29 19:44:46 2025 SE Asia Standard Time elapsed time: 0.017641 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001764eac2bc0):  JavaThread "Unknown thread" [_thread_in_vm, id=17468, stack(0x0000004930400000,0x0000004930500000) (1024K)]
+
+Stack: [0x0000004930400000,0x0000004930500000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6e26e9]  (no source info available)
+V  [jvm.dll+0x875753]  (no source info available)
+V  [jvm.dll+0x877b7e]  (no source info available)
+V  [jvm.dll+0x878253]  (no source info available)
+V  [jvm.dll+0x27fc86]  (no source info available)
+V  [jvm.dll+0x6ded85]  (no source info available)
+V  [jvm.dll+0x6d388a]  (no source info available)
+V  [jvm.dll+0x358b8a]  (no source info available)
+V  [jvm.dll+0x3610b6]  (no source info available)
+V  [jvm.dll+0x3b419e]  (no source info available)
+V  [jvm.dll+0x3b4448]  (no source info available)
+V  [jvm.dll+0x32c5ec]  (no source info available)
+V  [jvm.dll+0x32d258]  (no source info available)
+V  [jvm.dll+0x83d5ac]  (no source info available)
+V  [jvm.dll+0x3c10d1]  (no source info available)
+V  [jvm.dll+0x8264cc]  (no source info available)
+V  [jvm.dll+0x45bd5e]  (no source info available)
+V  [jvm.dll+0x45dbe1]  (no source info available)
+C  [jli.dll+0x52a3]  (no source info available)
+C  [ucrtbase.dll+0x37b0]  (no source info available)
+C  [KERNEL32.DLL+0x2e8d7]  (no source info available)
+C  [ntdll.dll+0x8d9c]  (no source info available)
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffd3cdec1c8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x000001764eaefa40 WorkerThread "GC Thread#0"                     [id=20780, stack(0x0000004930500000,0x0000004930600000) (1024K)]
+  0x000001764eb10a10 ConcurrentGCThread "G1 Main Marker"            [id=22660, stack(0x0000004930600000,0x0000004930700000) (1024K)]
+  0x000001764eb11520 WorkerThread "G1 Conc#0"                       [id=25900, stack(0x0000004930700000,0x0000004930800000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd3c53f517]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffd3ce6cc80] Heap_lock - owner thread: 0x000001764eac2bc0
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total reserved 524288K, committed 0K, used 0K [0x00000000e0000000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd3c93e869]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.012 Loaded shared library C:\Program Files\Java\jdk-22\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7c1860000 - 0x00007ff7c1870000 	C:\Program Files\Java\jdk-22\bin\java.exe
+0x00007ffe419e0000 - 0x00007ffe41c49000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffe410d0000 - 0x00007ffe41199000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffe3eeb0000 - 0x00007ffe3f2a3000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffe3f660000 - 0x00007ffe3f7ab000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffe14050000 - 0x00007ffe14067000 	C:\Program Files\Java\jdk-22\bin\jli.dll
+0x00007ffe3fb40000 - 0x00007ffe3fd04000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffe3ed40000 - 0x00007ffe3ed67000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffe41720000 - 0x00007ffe4174b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffe3eb70000 - 0x00007ffe3ec9d000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffe3ee00000 - 0x00007ffe3eea3000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffe12ff0000 - 0x00007ffe1300b000 	C:\Program Files\Java\jdk-22\bin\VCRUNTIME140.dll
+0x00007ffe23f10000 - 0x00007ffe241a3000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.5074_none_3e0d6f78e32fd63f\COMCTL32.dll
+0x00007ffe41750000 - 0x00007ffe417f9000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffe416e0000 - 0x00007ffe4170f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffe39880000 - 0x00007ffe3988c000 	C:\Program Files\Java\jdk-22\bin\vcruntime140_1.dll
+0x00007ffdeda60000 - 0x00007ffdedaee000 	C:\Program Files\Java\jdk-22\bin\msvcp140.dll
+0x00007ffd3c200000 - 0x00007ffd3cf49000 	C:\Program Files\Java\jdk-22\bin\server\jvm.dll
+0x00007ffe41800000 - 0x00007ffe418b4000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffe3fda0000 - 0x00007ffe3fe46000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffe40160000 - 0x00007ffe40278000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffe414c0000 - 0x00007ffe41534000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffe3e9d0000 - 0x00007ffe3ea2e000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffe281a0000 - 0x00007ffe281d5000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffe372c0000 - 0x00007ffe372cb000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffe3e9b0000 - 0x00007ffe3e9c4000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffe3d950000 - 0x00007ffe3d96b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffe22040000 - 0x00007ffe2204a000 	C:\Program Files\Java\jdk-22\bin\jimage.dll
+0x00007ffe3b930000 - 0x00007ffe3bb72000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffe3f7b0000 - 0x00007ffe3fb2b000 	C:\WINDOWS\System32\combase.dll
+0x00007ffe40280000 - 0x00007ffe40357000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffe264d0000 - 0x00007ffe2650d000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffe3eca0000 - 0x00007ffe3ed39000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffe12be0000 - 0x00007ffe12bfe000 	C:\Program Files\Java\jdk-22\bin\java.dll
+0x00007ffe40360000 - 0x00007ffe40aad000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffe3f2b0000 - 0x00007ffe3f41c000 	C:\WINDOWS\System32\wintypes.dll
+0x00007ffe41540000 - 0x00007ffe416d8000 	C:\WINDOWS\System32\ole32.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.5074_none_3e0d6f78e32fd63f;C:\Program Files\Java\jdk-22\bin\server
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Djava.library.path=C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ACER\bin;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;D:\laragon\bin\php\php-8.3.16-Win32-vs16-x64;C:\laragon\bin\php\php-8.4.2;C:\Program Files\Common Files\Oracle\Java\javapath;D:\oracle\dbhomeXE\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\ProgramData\ComposerSetup\bin;C:\php;D:\xampp\php;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\runtime\win64;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\bin;C:\Program Files\swipl\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0;%SYSTEMROOT%\System32\OpenSSH;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;C:\laragon\bin;C:\laragon\bin\apache\httpd-2.4.54-win64-VS16\bin;C:\laragon\bin\code;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\go\bin;C:\laragon\bin\laragon\utils;C:\laragon\bin\mysql\mysql-8.0.40-winx64\bin;C:\laragon\bin\nginx\nginx-1.22.0;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v22.12.0-win-x64;C:\laragon\bin\notepad++;C:\laragon\bin\php\php-8.4.2;C:\laragon\bin\pocketbase;C:\laragon\bin\postgresql\postgresql-14.5-1\bin;C:\laragon\bin\python\python-3.10;C:\laragon\bin\python\python-3.10\Scripts;C:\laragon\bin\redis\redis-x64-5.0.14.1;C:\laragon\bin\telnet;C:\laragon\bin\yarn\bin;C:\laragon\usr\bin;C:\Users\ACER\App-Dorg.gradle.internal.worker.tmpdir=D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\tmp\testReleaseUnitTest\work --add-opens=java.base/java.io=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=ID -Duser.language=en -Duser.variant -ea 
+java_command: worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 2'
+java_class_path (initial): C:\Users\ACER\.gradle\caches\8.13\workerMain\gradle-worker.jar;D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\tmp\kotlin-classes\releaseUnitTest;D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\intermediates\java_res\releaseUnitTest\processReleaseUnitTestJavaRes\out;D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\intermediates\runtime_app_classes_jar\release\bundleReleaseClassesToRuntimeJar\classes.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-parcelize-runtime\2.0.21\8947a70750a8552acfe84ad5703e16bf072d9368\kotlin-parcelize-runtime-2.0.21.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\junit\junit\4.13.2\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\junit-4.13.2.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f453977d0c73aec86fee21a1e241009a\transformed\viewbinding-8.12.0-alpha08-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\08855ac106053e8a56d5cb7aca6cd5c1\transformed\material-1.11.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\a20a9e3cbbef309488d7d5e1c4400acc\transformed\constraintlayout-2.1.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\1862057428f0a15f45519251796beb68\transformed\coil-2.6.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\27dff96c9334e31c660c11e0c3b554ca\transformed\coil-base-2.6.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\1698d7ea0569abf09076dc85ad818648\transformed\appcompat-resources-1.6.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\7343f6636439180a201194ca86cd7409\transformed\appcompat-1.6.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\79cb7adb87b8b2c8609288666e0f2ea4\transformed\material3-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\668cdace8d931c2f68f906889300fd4a\transformed\animation-core-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\32f09b2af22f40b18ab7279abb534e28\transformed\material-ripple-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\162424677f99a7a4bc482306f0121e28\transformed\animation-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\797b82b7f9ad9bf1c05ba5a96597f64d\transformed\foundation-layout-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f83bb7341ed55e8519c08023f68ed1f6\transformed\foundation-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\87d81367274d716bfa889d12c30da2e4\transformed\ui-unit-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\af64f3753ce425a606f5f30c7a02871d\transformed\ui-geometry-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\1ff29f4a9fbc2b46abbdec9f3e0910c6\transformed\ui-util-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d4e4dd2e7575618acfd5b2283867c32f\transformed\ui-text-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e54b0495ff8f087661bfd0c90baf2c93\transformed\ui-tooling-preview-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\071af2c830139890239aef2ab6e2d34a\transformed\ui-graphics-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c55beb9b441d16d82cae2a18db0e1076\transformed\material-icons-core-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b77b63c8d95b45d21efac9ed9740af98\transformed\ui-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8001d3e051a4f4be621d0440e4318170\transformed\activity-ktx-1.11.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e4ab88e2b38d3ce21368d7bda32ff54b\transformed\recyclerview-1.3.2-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\38ac9bbba2830c6995fb97e7bfbab6a8\transformed\viewpager2-1.1.0-beta02-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\50cf518f3eae3bfc724048102373d381\transformed\fragment-1.3.6-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8cbd4e0555689d1d6a03a03c7f9f09d9\transformed\activity-1.11.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f4dc0d7ad14fb2072610ff35c650fa3b\transformed\activity-compose-1.11.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\769661c70d02151237fe7b5a5174c106\transformed\drawerlayout-1.1.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\5e2a694fc884a887a29e6b2987b78d40\transformed\coordinatorlayout-1.1.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\2266ffa2d648cf589ea5db39b8390ad3\transformed\dynamicanimation-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\6c25ba3ff6a99d28900564f42f4077f4\transformed\transition-1.2.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c632496c295dfa289a3ae5254daabaf0\transformed\vectordrawable-animated-1.1.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\55b95fec84fdf49ae8ff0a7832256910\transformed\vectordrawable-1.1.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\bd1a1fcdfd5f7eec5a9ea020d3d439b5\transformed\viewpager-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e5559928999086c228e43463e6823f82\transformed\legacy-support-core-utils-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\19c73db28b6a8d0417742fb070a45a67\transformed\loader-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f7c91c9837534f99d88bee526c2c3961\transformed\customview-1.1.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\4dbbf8901585d593fe2a756b8203e8b8\transformed\autofill-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f0fc67472a577f7404f58604d3acd874\transformed\graphics-path-1.0.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\97e2f83e1b69a50c194bccc879de20e3\transformed\emoji2-views-helper-1.3.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\6a7bbe49fb8b8382dee5e69292eec126\transformed\emoji2-1.3.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\686a93ce8aa3f5240fa9cc87b5d800aa\transformed\core-1.17.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c9185d60f8d1120e1c4c7f1fc7fcf2e8\transformed\customview-poolingcontainer-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3336e500f93592614521f1285ea8fa10\transformed\lifecycle-process-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\2e4358096e17821c0806b17fec75f86f\transformed\runtime-annotation-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\1bcdd7504a2aa99a47157254959643fd\transformed\savedstate-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d13ab4e3cacd0f01e2ab3976ea2d8af7\transformed\savedstate-ktx-1.3.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e90d09ae56283c4cc74fbbff8d3b92f6\transformed\savedstate-compose-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\892d5445225fb8ad00dc04559c34a665\transformed\runtime-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\2ca0db0f963104485ef9ade5ab141539\transformed\runtime-saveable-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b7aba1ddacd42d25ae6fd85ac01713f7\transformed\lifecycle-runtime-compose-release-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-java8\2.9.4\86a8e6b9d0ba0c964fdc7223a38b6ce74bcb24dd\lifecycle-common-java8-2.9.4.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\826b1b55e5cbf92ee25f1ee63484fb69\transformed\lifecycle-viewmodel-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3614651f5c3b5abbfc2abf3dcc526bfa\transformed\lifecycle-viewmodel-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\22c404e1f0e9de47f8ed6fe63bf5e00f\transformed\lifecycle-livedata-core-ktx-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e2cc112a84582051ffe31c4e4219c049\transformed\lifecycle-livedata-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-jvm\2.9.4\ab739bccdb3541983385af169565c7c035d897e7\lifecycle-common-jvm-2.9.4.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c5d70a57a7ae06b84303bb77e458c745\transformed\lifecycle-runtime-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c19154a950c0f0acd542222b62d03bba\transformed\lifecycle-livedata-core-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f7cf9f0994fbe2e3fee7567399fd33a8\transformed\lifecycle-viewmodel-ktx-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\dda595eb9eaf2738bbc98bd1dc544efa\transformed\lifecycle-livedata-ktx-2.9.4-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\5e76a2c2c3d7762339d4f0621b3347dd\transformed\lifecycle-runtime-ktx-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b1c3b31867baa7e4b8e8ceabb906ff9d\transformed\lifecycle-viewmodel-savedstate-release-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c81c058027086160b561caf6100b66d9\transformed\core-ktx-1.17.0-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-android-extensions-runtime\2.0.21\ec0f8b769af81cd91a76b530399684a9567bdc35\kotlin-android-extensions-runtime-2.0.21.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\290ada77998a41216b67321b024a232d\transformed\core-viewtree-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8a207ee97cd9f08ffba1f753979f8d09\transformed\annotation-experimental-1.4.1-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlinx\kotlinx-coroutines-core-jvm\1.8.1\bb0e192bd7c2b6b8217440d36e9758e377e450\kotlinx-coroutines-core-jvm-1.8.1.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlinx\kotlinx-coroutines-android\1.8.1\73e2acdd18df99dd4849d99f188dff529fc0afe0\kotlinx-coroutines-android-1.8.1.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\859dd6d5e16e28cea3dbbb623ef9feaf\transformed\profileinstaller-1.4.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b6f563cc01a70f665c1a269e45bb3cf8\transformed\cursoradapter-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.resourceinspection\resourceinspection-annotation\1.0.1\8c21f8ff5d96d5d52c948707f7e4d6ca6773feef\resourceinspection-annotation-1.0.1.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\ccb4dfbbac252899e52bfcae69b78fbf\transformed\cardview-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\75fed6ed36a585d51cc65e3215fa9808\transformed\startup-runtime-1.1.1-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\69da2fc4a4bf0723eaa4a77272c77ff2\transformed\tracing-1.2.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\75c2fc11f1af16090fcdcb04dd178832\transformed\interpolator-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\019443be0f42330308c4a34f7bf45ed1\transformed\versionedparcelable-1.1.1-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.concurrent\concurrent-futures\1.1.0\50b7fb98350d5f42a4e49704b03278542293ba48\concurrent-futures-1.1.0.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\898c8ce28f9fa8746a307a79d48e6b4e\transformed\exifinterface-1.3.7-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\550af11336585a7e5a38cb6742ade58c\transformed\core-runtime-2.2.0-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.arch.core\core-common\2.2.0\5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3\core-common-2.2.0.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c3fdf5ab0b252311662511bcbbeff1b6\transformed\documentfile-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\967f7f1913788eee8b6d22ad50148bab\transformed\localbroadcastmanager-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3f0912a32291f55ffa5b1257fdc443c8\transformed\print-1.0.0-runtime.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.collection\collection-ktx\1.5.0\27c78a926a16a1bf792b2285cf2834e8caae4a07\collection-ktx-1.5.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.collection\collection-jvm\1.5.0\7ba2c69414d46ebc2dd76598bdd0a75c54281a57\collection-jvm-1.5.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.annotation\annotation-jvm\1.9.1\b17951747e38bf3986a24431b9ba0d039958aa5f\annotation-jvm-1.9.1.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.9.0\fc93484fc67ab52b1e0ccbdaa3922d8a6678e097\converter-gson-2.9.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.9.0\d8fdfbd5da952141a665a403348b74538efc05ff\retrofit-2.9.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\4.12.0\2f4525d4a200e97e1b87449c2cd9bd2e25b7e8cd\okhttp-4.12.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-jdk8\1.8.22\b25c86d47d6b962b9cf0f8c3f320c8a10eea3dd1\kotlin-stdlib-jdk8-1.8.22.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio-jvm\3.8.0\856593a7eb4dc94f9fe27b4a4d14624a8db9ffa7\okio-jvm-3.8.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-jdk7\1.8.22\4dabb8248310d833bb6a8b516024a91fd3d275c\kotlin-stdlib-jdk7-1.8.22.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlinx\kotlinx-serialization-core-jvm\1.7.3\1f226780b845ff9206474c05159245d861556249\kotlinx-serialization-core-jvm-1.7.3.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\2.0.21\618b539767b4899b4660a83006e052b63f1db551\kotlin-stdlib-2.0.21.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\23.0.0\8cc20c07506ec18e0834947b84a864bfc094484e\annotations-23.0.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.5\f645ed69d595b24d4cf8b3fbb64cc505bede8829\gson-2.8.5.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.google.errorprone\error_prone_annotations\2.15.0\38c8485a652f808c8c149150da4e5c2b0bd17f9a\error_prone_annotations-2.15.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\androidx.constraintlayout\constraintlayout-core\1.0.4\29cdbe03ded6b0980f63fa5da2579a430e911c40\constraintlayout-core-1.0.4.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\com.google.guava\listenablefuture\1.0\c949a840a6acbc5268d088e47b04177bf90b3cad\listenablefuture-1.0.jar;C:\Users\ACER\.gradle\caches\modules-2\files-2.1\org.jspecify\jspecify\1.0.0\7425a601c1c7ec76645a78d22b8c6a627edee507\jspecify-1.0.0.jar;D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\intermediates\java_res\release\processReleaseJavaRes\out;C:\Users\ACER\.gradle\caches\8.13\transforms\f0d7d62a4814f62d3bf0e7a6cadf9d62\transformed\viewbinding-8.12.0-alpha08\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\6c058ba145b2878d2f0acc19ba9bf7a0\transformed\material-1.11.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c4e9d0e54be2e8091b9ef26253cdab8a\transformed\constraintlayout-2.1.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\9295a16a3653768ed5a23a03e8c1f13e\transformed\coil-2.6.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\ce65fa7f68a2ec4a68f0b0cdfe0e9a5a\transformed\coil-base-2.6.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\99e226c9c4100f9e72937c5fe27f2c18\transformed\appcompat-resources-1.6.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\48f0e1180265e757d4b6f27c067aede8\transformed\appcompat-1.6.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b835e005d04d885ebc554bad448d21eb\transformed\material3-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3953df115b7452f6605e19796504446a\transformed\animation-core-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\a1e1deee90828576dec1efbc9fc6b189\transformed\material-ripple-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\1c4b63ef4dfda5162f6daed4dcd41031\transformed\animation-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\02b6aeaadcbe7d83a42ccc70d25f5747\transformed\foundation-layout-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3e8aa744af77fe23c508a10093a7d637\transformed\foundation-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8420c63d252a2a8a8d4bf404b0c3a1ed\transformed\ui-unit-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\73a0ca2b9dd44eb62a594edb25b5d085\transformed\ui-geometry-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f06ff4defcb573991fb8c266982e25e3\transformed\ui-util-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\727f000f1107efb63c5d4cea01d190c5\transformed\ui-text-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\830cddfa59902820aa6032b3e53fb75f\transformed\ui-tooling-preview-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\2033c64fc9f79a80dbb1164685606dc4\transformed\ui-graphics-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\06f4c91568488f57659925b888128a0f\transformed\material-icons-core-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f1d30932941b1f1554f3b0528113d46d\transformed\ui-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\5233dd0dafb069260d443f56d42171be\transformed\activity-ktx-1.11.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\94e7c3addd081a89c5f04f13fc4f43f1\transformed\recyclerview-1.3.2\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e87f4d12acbf1409bb21c0342892a943\transformed\viewpager2-1.1.0-beta02\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\bcdaf3282b6fd68f6df30944ae9174b5\transformed\fragment-1.3.6\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d91709b437528f80a4881988cf913efe\transformed\activity-1.11.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\db3954947ae599175561f4e52e0143af\transformed\activity-compose-1.11.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d3f59798223e1fc8583d97db8e8438a6\transformed\drawerlayout-1.1.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\05bad7a7d743d968f719da9004df12ff\transformed\coordinatorlayout-1.1.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\4248082c522cbc998e3e60b407427d0b\transformed\dynamicanimation-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\a608fd4602db3f01a3662dbc4fc582d8\transformed\transition-1.2.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d7c246f6b8435bb726e4c5af8b0327da\transformed\vectordrawable-animated-1.1.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\5cdb68a43969783dc830220d61b6e60c\transformed\vectordrawable-1.1.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c1c228173d3dcd310a9b571e6aeb9965\transformed\viewpager-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\fb582bac809c52c9278e22f1bffaba90\transformed\legacy-support-core-utils-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\b1aaeed51a8760dfd5f144763214d26f\transformed\loader-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\0410b6bcadbe1dde3ed4ed31e2e1305c\transformed\customview-1.1.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\6f349ce25ee9ef06d1de47656c299a39\transformed\autofill-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\5d8cd5c442579e578e18b3ade8a7cee5\transformed\graphics-path-1.0.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\fce4d10e5ee519bdb5c32521878be135\transformed\emoji2-views-helper-1.3.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e7264d3caaf3c2c9596a47b23606bf20\transformed\emoji2-1.3.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e7264d3caaf3c2c9596a47b23606bf20\transformed\emoji2-1.3.0\jars\libs\repackaged.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\75ead772bb90ed47b4cdf08f07ac5a2c\transformed\core-1.17.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c4dc7342352a2917c4f61673f63be661\transformed\customview-poolingcontainer-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\636646ff5365ee5bca9c235da1c6d1a5\transformed\lifecycle-process-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\0dbe9c6f1245c8a8638bb45607900500\transformed\runtime-annotation\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\bff3355d1636e8f2bed58e58ef7102de\transformed\savedstate-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\ca6b2a1ffeec9d435fc456dde0cf82f0\transformed\savedstate-ktx-1.3.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8247e94f180f9ff4f8b30bc364295b95\transformed\savedstate-compose-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\0cda9a29df39cefeb015b6fdfdb8fbbd\transformed\runtime\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\43cbc27c79ba541a39fa918c31cc1a54\transformed\runtime-saveable\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\3b5514ae76d8160a74b4a16879b880ec\transformed\lifecycle-runtime-compose-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\21ef6e39206dfb6f0766c639c02e7012\transformed\lifecycle-viewmodel-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\919ad312232dc0a63b4550217149afa1\transformed\lifecycle-viewmodel-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\260b3c8cecc3e71b43d927afc68c5964\transformed\lifecycle-livedata-core-ktx-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\81393696a23e753f484e28de5c50960d\transformed\lifecycle-livedata-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\7b1e237197203276eec46a2e6a146491\transformed\lifecycle-runtime-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\969e8c54f51e074635c399078b4ad452\transformed\lifecycle-livedata-core-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\59e4bc0e26f813af4b114493c8746ec4\transformed\lifecycle-viewmodel-ktx-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\631775d56de8c7024ad132329e31b407\transformed\lifecycle-livedata-ktx-2.9.4\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\027c8528f3583a7259fe2225def20aeb\transformed\lifecycle-runtime-ktx\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f545c262065425d19606862586d6f5f8\transformed\lifecycle-viewmodel-savedstate-release\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\686785ecc0c9cf7d3dd7fdebdca6f24d\transformed\core-ktx-1.17.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\f96d5d81328091b17bdde6ffa11810ef\transformed\core-viewtree-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c05947ac8248f7027fab907d3e98c67f\transformed\annotation-experimental-1.4.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\a4a612241400572f4af94f1ec05df7e9\transformed\profileinstaller-1.4.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\033bac243e1d3c0477aa48665933f231\transformed\cursoradapter-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d4766046fd8342a738ef85cedaaad5a8\transformed\cardview-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\218d58a3c5a8cabfa9633a6bbbccbd4b\transformed\startup-runtime-1.1.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\cb317e25ba3df7ab70f76c77114e936f\transformed\tracing-1.2.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\a7d92c73f3a247c6de8534d19275d9f3\transformed\interpolator-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\315f0fbfcf300de45a6d3d0532f03a46\transformed\versionedparcelable-1.1.1\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\c9de8c5ebcc3a0af82e86aa48477ac53\transformed\exifinterface-1.3.7\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\e738c757cccd88d4dc3261623ccf3f4c\transformed\core-runtime-2.2.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\d1bca1e356650857b32c1ddbe78954cb\transformed\documentfile-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\df789e3d8dc562e3bb878e9fb0185e0a\transformed\localbroadcastmanager-1.0.0\jars\classes.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\8739c4b6408e2d78b4f91ff96d28bbb4\transformed\print-1.0.0\jars\classes.jar;D:\GILANG\KULIAH\SEMESTER 5\Moviesta\app\build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\release\processReleaseResources\R.jar;C:\Users\ACER\.gradle\caches\8.13\transforms\40eebaaf5de8d0048de56b6112657268\transformed\android.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+   size_t InitialHeapSize                          = 264241152                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 536870912                              {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\ACER\bin;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;D:\laragon\bin\php\php-8.3.16-Win32-vs16-x64;C:\laragon\bin\php\php-8.4.2;C:\Program Files\Common Files\Oracle\Java\javapath;D:\oracle\dbhomeXE\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\ProgramData\ComposerSetup\bin;C:\php;D:\xampp\php;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\runtime\win64;D:\GILANG\KULIAH\SEMESTER 4\Prak KB\Matlab2013\bin;C:\Program Files\swipl\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0;%SYSTEMROOT%\System32\OpenSSH;D:\laragon\bin\php\php-8.4.3-nts-Win32-vs17-x64;D:\laragon\bin\php\php-7.3.0-nts-Win32-VC15-x64;C:\laragon\bin;C:\laragon\bin\apache\httpd-2.4.54-win64-VS16\bin;C:\laragon\bin\code;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\go\bin;C:\laragon\bin\laragon\utils;C:\laragon\bin\mysql\mysql-8.0.40-winx64\bin;C:\laragon\bin\nginx\nginx-1.22.0;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v22.12.0-win-x64;C:\laragon\bin\notepad++;C:\laragon\bin\php\php-8.4.2;C:\laragon\bin\pocketbase;C:\laragon\bin\postgresql\postgresql-14.5-1\bin;C:\laragon\bin\python\python-3.10;C:\laragon\bin\python\python-3.10\Scripts;C:\laragon\bin\redis\redis-x64-5.0.14.1;C:\laragon\bin\telnet;C:\laragon\bin\yarn\bin;C:\laragon\usr\bin;C:\Users\ACER\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\ACER\AppData\Roaming\Composer\vendor\bin;C:\Users\ACER\AppData\Roaming\npm;C:\Users\ACER\AppData\Local\Programs\Python\Launcher;C:\Users\ACER\AppData\Local\Microsoft\WindowsApps;C:\Users\ACER\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64\mingw64\bin;C:\Users\ACER\AppData\Local\spicetify;C:\Users\ACER\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\ACER\AppData\Local\Microsoft\WindowsApps;C:\Users\ACER\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+USERNAME=ACER
+LANG=en_US.UTF-8
+TERM=xterm-256color
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 154 Stepping 3, GenuineIntel
+TMP=C:\Users\ACER\AppData\Local\Temp
+TEMP=C:\Users\ACER\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.5074)
+OS uptime: 0 days 15:35 hours
+Hyper-V role detected
+
+CPU: total 12 (initial active 12) (6 cores per cpu, 2 threads per core) family 6 model 154 stepping 3 microcode 0x419, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, clwb, hv, serialize, rdtscp, rdpid, fsrm, f16c, cet_ibt, cet_ss
+Processor Information for processor 0
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 1
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 2
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 3
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 4
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 5
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 6
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 7
+  Max Mhz: 2000, Current Mhz: 2000, Mhz Limit: 2000
+Processor Information for processor 8
+  Max Mhz: 2000, Current Mhz: 1500, Mhz Limit: 1500
+Processor Information for processor 9
+  Max Mhz: 2000, Current Mhz: 1500, Mhz Limit: 1500
+Processor Information for processor 10
+  Max Mhz: 2000, Current Mhz: 1500, Mhz Limit: 1500
+Processor Information for processor 11
+  Max Mhz: 2000, Current Mhz: 1500, Mhz Limit: 1500
+
+Memory: 4k page, system-wide physical 16088M (1103M free)
+TotalPageFile size 23683M (AvailPageFile size 227M)
+current process WorkingSet (physical memory assigned to process): 13M, peak: 13M
+current process commit charge ("private bytes"): 64M, peak: 316M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (22.0.2+9-70) for windows-amd64 JRE (22.0.2+9-70), built on 2024-06-04T16:52:23Z by "mach5one" with MS VC++ 17.6 (VS2022)
+
+END.

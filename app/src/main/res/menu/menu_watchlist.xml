@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_clear_all"
+        android:icon="@drawable/ic_clear_all"
+        android:title="Hapus Semua"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort"
+        android:title="Urutkan"
+        app:showAsAction="never">
+        
+        <menu>
+            <item
+                android:id="@+id/action_sort_date_desc"
+                android:title="Terbaru Ditambahkan" />
+            
+            <item
+                android:id="@+id/action_sort_date_asc"
+                android:title="Terlama Ditambahkan" />
+            
+            <item
+                android:id="@+id/action_sort_title_asc"
+                android:title="Judul A-Z" />
+            
+            <item
+                android:id="@+id/action_sort_title_desc"
+                android:title="Judul Z-A" />
+            
+            <item
+                android:id="@+id/action_sort_rating_desc"
+                android:title="Rating Tertinggi" />
+            
+            <item
+                android:id="@+id/action_sort_rating_asc"
+                android:title="Rating Terendah" />
+        </menu>
+        
+    </item>
+
+</menu>

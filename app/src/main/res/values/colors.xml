@@ -27,4 +27,10 @@
     <!-- Card colors for light mode -->
     <color name="card_background">#FFFFFF</color>
     <color name="card_surface">#F8FAFC</color>
+    
+    <!-- Additional colors for watchlist -->
+    <color name="success_color">#10B981</color>
+    <color name="error_color">#EF4444</color>
+    <color name="warning_color">#F59E0B</color>
+    <color name="info_color">#3B82F6</color>
 </resources>

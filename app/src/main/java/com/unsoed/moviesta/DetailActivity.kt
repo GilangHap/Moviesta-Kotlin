@@ -1,5 +1,6 @@
 package com.unsoed.moviesta
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -8,16 +9,21 @@ import android.widget.TextView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar // Diperlukan untuk Toolbar
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.google.android.material.appbar.CollapsingToolbarLayout // Diperlukan untuk CollapsingToolbar
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.model.FilmDetail
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
 import com.unsoed.moviesta.view.RecommendationAdapter
 import com.unsoed.moviesta.view.GenreAdapter
+import com.unsoed.moviesta.viewmodel.WatchlistViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,6 +47,13 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var recyclerViewRecommendations: RecyclerView
     private lateinit var layoutNoRecommendations: LinearLayout
     private lateinit var layoutRecommendationsLoading: LinearLayout
+    
+    // Watchlist components
+    private lateinit var watchlistViewModel: WatchlistViewModel
+    private lateinit var btnWatchlist: MaterialButton
+    private lateinit var btnShare: MaterialButton
+    private var currentFilm: Film? = null
+    private var currentFilmDetail: FilmDetail? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,9 +100,14 @@ class DetailActivity : AppCompatActivity() {
         // 6. Setup empty state
         layoutNoRecommendations = findViewById(R.id.layout_no_recommendations)
         layoutRecommendationsLoading = findViewById(R.id.layout_recommendations_loading)
+        
+        // 7. Setup Watchlist components
+        setupWatchlist()
 
         // Tampilkan data jika film tidak null
         film?.let { detail ->
+            currentFilm = detail
+            
             // Load detail film untuk mendapatkan genre dan informasi lengkap
             loadFilmDetail(detail.id)
 
@@ -117,6 +135,16 @@ class DetailActivity : AppCompatActivity() {
                 val filmDetail = repository.getFilmDetail(movieId)
                 
                 CoroutineScope(Dispatchers.Main).launch {
+                    // Store the film detail for watchlist operations
+                    currentFilmDetail = filmDetail
+                    
+                    // Update watchlist status if button is initialized
+                    if (::btnWatchlist.isInitialized) {
+                        watchlistViewModel.isInWatchlist(filmDetail.id).observe(this@DetailActivity) { isInWatchlist ->
+                            updateWatchlistButton(isInWatchlist)
+                        }
+                    }
+                    
                     // Mengambil referensi View
                     val imgPoster: ImageView = findViewById(R.id.img_poster_detail)
                     val tvTitle: TextView = findViewById(R.id.tv_title_detail)
@@ -264,5 +292,106 @@ class DetailActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+    
+    // Setup Watchlist functionality
+    private fun setupWatchlist() {
+        // Initialize ViewModel
+        watchlistViewModel = ViewModelProvider(this)[WatchlistViewModel::class.java]
+        
+        // Initialize Buttons
+        btnWatchlist = findViewById(R.id.btn_watchlist)
+        btnShare = findViewById(R.id.btn_share)
+        
+        // Setup observers
+        setupWatchlistObservers()
+        
+        // Setup click listeners
+        btnWatchlist.setOnClickListener {
+            toggleWatchlist()
+        }
+        
+        btnShare.setOnClickListener {
+            shareFilm()
+        }
+        
+        // Check initial watchlist status
+        currentFilm?.let { film ->
+            watchlistViewModel.isInWatchlist(film.id).observe(this) { isInWatchlist ->
+                updateWatchlistButton(isInWatchlist)
+            }
+        }
+    }
+    
+    private fun setupWatchlistObservers() {
+        // Observe success messages
+        watchlistViewModel.successMessage.observe(this) { message ->
+            message?.let {
+                showSnackbar(it)
+                watchlistViewModel.clearMessages()
+            }
+        }
+        
+        // Observe error messages
+        watchlistViewModel.errorMessage.observe(this) { message ->
+            message?.let {
+                showSnackbar(it, isError = true)
+                watchlistViewModel.clearMessages()
+            }
+        }
+        
+        // Observe loading state
+        watchlistViewModel.isLoading.observe(this) { isLoading ->
+            btnWatchlist.isEnabled = !isLoading
+        }
+    }
+    
+    private fun toggleWatchlist() {
+        when {
+            currentFilmDetail != null -> {
+                watchlistViewModel.toggleWatchlist(currentFilmDetail!!)
+            }
+            currentFilm != null -> {
+                watchlistViewModel.toggleWatchlist(currentFilm!!)
+            }
+            else -> {
+                showSnackbar("Error: Data film tidak tersedia", isError = true)
+            }
+        }
+    }
+    
+    private fun updateWatchlistButton(isInWatchlist: Boolean) {
+        if (isInWatchlist) {
+            btnWatchlist.text = "Hapus dari Watchlist"
+            btnWatchlist.setIconResource(R.drawable.ic_bookmark)
+        } else {
+            btnWatchlist.text = "Tambah ke Watchlist"
+            btnWatchlist.setIconResource(R.drawable.ic_bookmark_border)
+        }
+    }
+    
+    private fun shareFilm() {
+        val filmTitle = currentFilmDetail?.title ?: currentFilm?.title ?: "Film"
+        val shareText = "Ayo tonton film \"$filmTitle\"! Film yang sangat menarik dan wajib ditonton. 🎬\n\nShared from Moviesta App"
+        
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, shareText)
+        }
+        
+        try {
+            startActivity(Intent.createChooser(shareIntent, "Bagikan Film"))
+        } catch (e: Exception) {
+            showSnackbar("Tidak dapat berbagi film", isError = true)
+        }
+    }
+    
+    private fun showSnackbar(message: String, isError: Boolean = false) {
+        val snackbar = Snackbar.make(btnWatchlist, message, Snackbar.LENGTH_SHORT)
+        if (isError) {
+            snackbar.setBackgroundTint(getColor(android.R.color.holo_red_dark))
+        }
+        snackbar.show()
     }
 }
