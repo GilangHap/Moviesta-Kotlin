@@ -55,7 +55,8 @@ data class WatchlistItem(
             title = this.title,
             sinopsis = this.overview,
             posterPath = this.posterPath,
-            voteAverage = this.voteAverage
+            voteAverage = this.voteAverage,
+            releaseDate = null // WatchlistItem doesn't store release date
         )
     }
 }

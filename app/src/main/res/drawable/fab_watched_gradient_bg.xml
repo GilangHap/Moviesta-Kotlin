@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    
+    <gradient
+        android:startColor="@color/fab_watched_checked"
+        android:endColor="@color/fab_watched_bg"
+        android:angle="135"
+        android:type="linear" />
+    
+    <stroke
+        android:width="2dp"
+        android:color="@color/fab_watched_bg" />
+        
+    <size
+        android:width="56dp"
+        android:height="56dp" />
+</shape>

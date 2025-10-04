@@ -6,20 +6,20 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.unsoed.moviesta.base.BaseAuthActivity
 import com.google.android.material.snackbar.Snackbar
 import com.unsoed.moviesta.model.WatchlistItem
 import com.unsoed.moviesta.view.WatchlistAdapter
 import com.unsoed.moviesta.view.CustomBottomNavigation
 import com.unsoed.moviesta.viewmodel.WatchlistViewModel
 
-class WatchlistActivity : AppCompatActivity() {
+class WatchlistActivity : BaseAuthActivity() {
 
     private lateinit var watchlistViewModel: WatchlistViewModel
     private lateinit var watchlistAdapter: WatchlistAdapter

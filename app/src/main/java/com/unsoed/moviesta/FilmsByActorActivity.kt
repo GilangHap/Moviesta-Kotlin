@@ -7,12 +7,12 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.google.android.material.appbar.MaterialToolbar
+import com.unsoed.moviesta.base.BaseAuthActivity
 import com.unsoed.moviesta.model.Actor
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.network.RetrofitClient
@@ -23,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class FilmsByActorActivity : AppCompatActivity() {
+class FilmsByActorActivity : BaseAuthActivity() {
 
     companion object {
         const val EXTRA_ACTOR = "extra_actor"

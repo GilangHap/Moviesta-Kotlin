@@ -7,5 +7,11 @@
         android:icon="@drawable/ic_bookmark"
         android:title="My Watchlist"
         app:showAsAction="always" />
+        
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_close"
+        android:title="Logout"
+        app:showAsAction="never" />
 
 </menu>

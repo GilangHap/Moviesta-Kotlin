@@ -8,15 +8,41 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <!-- Simplified Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_main"
+    <!-- Custom Toolbar with Logo -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/gradient_toolbar_background"
-        app:title="🎬 Moviesta"
-        app:titleTextAppearance="@style/ToolbarTitleStyle"
-        app:titleTextColor="@color/on_background" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/background"
+            android:paddingHorizontal="16dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="32dp"
+                android:src="@drawable/moviesta"
+                android:scaleType="fitStart"
+                android:layout_gravity="start|center_vertical" />
+
+            <!-- Menu Icon -->
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/ic_menu"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="4dp" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Main Content -->
     <androidx.core.widget.NestedScrollView
@@ -29,216 +55,264 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
-            <!-- Welcome Header -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Discover Amazing Movies"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/on_background"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find your next favorite film"
-                android:textSize="16sp"
-                android:textColor="@color/on_background"
-                android:layout_marginBottom="20dp"/>
-
-            <!-- Modern Search Container -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:strokeWidth="0dp"
-                app:cardBackgroundColor="@color/surface">
-
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/search_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="Search movies..."
-                    app:searchIcon="@drawable/ic_search"
-                    app:queryBackground="@android:color/transparent"
-                    android:background="@android:color/transparent" />
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Categories Section -->
+            <!-- Search Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginBottom="20dp">
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="20dp">
+
+                <!-- Search Container -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/outline"
+                    app:cardBackgroundColor="@color/surface_variant">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <!-- Search Icon -->
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_search"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/on_surface_variant" />
+
+                        <!-- Search Text -->
+                        <TextView
+                            android:id="@+id/tv_search_hint"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Search Moviebase"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="16sp" />
+
+                        <!-- Filter Icon -->
+                        <ImageView
+                            android:id="@+id/iv_filter"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_tune"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="2dp"
+                            app:tint="@color/on_surface_variant" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- Discover Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="20dp">
+
+                <!-- Discover Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Discover"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/on_background" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Upcoming Schedule Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Upcoming Schedule"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/on_background" />
+
+                    <!-- See All Arrow -->
+                    <ImageView
+                        android:id="@+id/iv_see_all_upcoming"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/on_surface_variant" />
+
+                </LinearLayout>
+
+                <!-- Upcoming Movies Horizontal RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_upcoming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:clipToPadding="false"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_movie_horizontal" />
+
+            </LinearLayout>
+
+            <!-- Recommendations Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_recommendations_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Recommended for You"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/on_background" />
+
+                    <!-- See All Arrow -->
+                    <ImageView
+                        android:id="@+id/iv_see_all_recommendations"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/on_surface_variant" />
+
+                </LinearLayout>
+
+                <!-- Recommendations Horizontal RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_recommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:clipToPadding="false"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_movie_horizontal" />
+
+            </LinearLayout>
+
+            <!-- Trending Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="24dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Trending Now"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/on_background" />
+
+                    <!-- See All Arrow -->
+                    <ImageView
+                        android:id="@+id/iv_see_all_trending"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:tint="@color/on_surface_variant" />
+
+                </LinearLayout>
+
+                <!-- Trending Movies Horizontal RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_trending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:clipToPadding="false"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_movie_horizontal" />
+
+            </LinearLayout>
+
+            <!-- Loading State -->
+            <LinearLayout
+                android:id="@+id/layout_loading"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kategori"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginBottom="12dp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_categories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clipToPadding="false" />
+                    android:text="Loading movies..."
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"/>
 
             </LinearLayout>
-
-            <!-- Quick Actions -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_trending"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="4dp"
-                    android:text="🔥 Trending"
-                    android:textSize="12sp"
-                    app:backgroundTint="@color/tertiary"
-                    app:cornerRadius="12dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_top_rated"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:text="⭐ Top Rated"
-                    android:textSize="12sp"
-                    app:backgroundTint="@color/secondary"
-                    app:cornerRadius="12dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_upcoming"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="4dp"
-                    android:text="🎬 Upcoming"
-                    android:textSize="12sp"
-                    app:backgroundTint="@color/primary"
-                    app:cornerRadius="12dp" />
-
-            </LinearLayout>
-
-            <!-- Section Title -->
-            <TextView
-                android:id="@+id/tv_section_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Popular Movies"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginBottom="16dp"/>
-
-            <!-- Content Container -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="400dp">
-
-                <!-- RecyclerView -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_films"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:spanCount="2"
-                    tools:listitem="@layout/item_film" />
-
-                <!-- Empty State Container -->
-                <LinearLayout
-                    android:id="@+id/layout_empty_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:padding="32dp">
-
-                    <!-- Empty Title -->
-                    <TextView
-                        android:id="@+id/tv_empty_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No Movies Found"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="8dp"/>
-
-                    <!-- Empty Message -->
-                    <TextView
-                        android:id="@+id/tv_empty_message"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Try searching with different keywords"
-                        android:textSize="16sp"
-                        android:textColor="@color/text_secondary"
-                        android:textAlignment="center"
-                        android:layout_marginBottom="24dp"/>
-
-                    <!-- Retry Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_retry"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Show Popular Movies"
-                        android:textColor="@android:color/white"
-                        app:backgroundTint="@color/primary_color"
-                        app:cornerRadius="24dp"
-                        android:visibility="gone"/>
-
-                </LinearLayout>
-
-                <!-- Loading State -->
-                <LinearLayout
-                    android:id="@+id/layout_loading"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:visibility="gone">
-
-                    <ProgressBar
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginBottom="16dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Loading movies..."
-                        android:textSize="16sp"
-                        android:textColor="@color/text_secondary"/>
-
-                </LinearLayout>
-
-            </FrameLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -10,6 +10,21 @@
     <color name="on_background">#F3F4F5</color>
     <color name="on_surface">#100C08</color>
     
+    <!-- Material Design 3 Colors -->
+    <color name="outline">#79747E</color>
+    <color name="surface_variant">#E7E0EC</color>
+    <color name="on_surface_variant">#49454F</color>
+    
+    <!-- Logo Colors -->
+    <color name="moviesta_gradient_start">#FF7A00</color>
+    <color name="moviesta_gradient_end">#B91C1C</color>
+    <color name="moviesta_text">#1F2937</color>
+    
+    <!-- Alias for Material Design naming -->
+    <color name="onPrimary">@color/on_primary</color>
+    <color name="onBackground">@color/on_background</color>
+    <color name="onSurface">@color/on_surface</color>
+    
     <!-- Theme Colors -->
     <color name="colorPrimary">@color/primary</color>
     <color name="colorPrimaryDark">@color/primary</color>
@@ -56,6 +71,14 @@
     <color name="genre_scifi">#4A5568</color>
     <color name="genre_fantasy">#9B59B6</color>
     
+    <!-- Futuristic FAB Colors -->
+    <color name="accent_blue">#00D4FF</color>
+    <color name="accent_blue_light">#4DE6FF</color>
+    <color name="accent_purple">#7C4DFF</color>
+    <color name="accent_purple_light">#B47CFF</color>
+    <color name="fab_watched_bg">#00C853</color>
+    <color name="fab_watched_checked">#4CAF50</color>
+    
     <!-- Legacy colors for compatibility -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -64,4 +87,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Onboarding Colors -->
+    <color name="black_overlay">#80000000</color>
 </resources>

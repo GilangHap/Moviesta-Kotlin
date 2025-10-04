@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="32dp"
+    android:viewportWidth="120"
+    android:viewportHeight="32">
+    
+    <!-- Background rounded rectangle -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M4,4 L116,4 A4,4 0 0,1 120,8 L120,24 A4,4 0 0,1 116,28 L4,28 A4,4 0 0,1 0,24 L0,8 A4,4 0 0,1 4,4 z" />
+    
+    <!-- Film strip holes on left -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M8,12 A2,2 0 1,1 8,16 A2,2 0 1,1 8,12" />
+    
+    <!-- Film strip holes on right -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M112,12 A2,2 0 1,1 112,16 A2,2 0 1,1 112,12" />
+    
+    <!-- Text "MOVIESTA" -->
+    <!-- M -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M20,10 L20,22 L22,22 L22,16 L24,20 L26,20 L28,16 L28,22 L30,22 L30,10 L27,10 L25,16 L23,10 Z" />
+    
+    <!-- O -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M34,10 A6,6 0 1,1 34,22 A6,6 0 1,1 34,10 M36,12 A4,4 0 1,0 36,20 A4,4 0 1,0 36,12" />
+    
+    <!-- V -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M48,10 L50,22 L52,22 L56,10 L54,10 L51,18 L48,10 Z" />
+    
+    <!-- I -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M60,10 L60,22 L62,22 L62,10 Z" />
+    
+    <!-- E -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M66,10 L66,22 L74,22 L74,20 L68,20 L68,17 L72,17 L72,15 L68,15 L68,12 L74,12 L74,10 Z" />
+    
+    <!-- S -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M78,10 L86,10 L86,12 L80,12 L80,15 L86,15 L86,22 L78,22 L78,20 L84,20 L84,17 L78,17 Z" />
+    
+    <!-- T -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M90,10 L98,10 L98,12 L95,12 L95,22 L93,22 L93,12 L90,12 Z" />
+    
+    <!-- A -->
+    <path
+        android:fillColor="@color/on_primary"
+        android:pathData="M102,10 L100,22 L102,22 L102.5,19 L105.5,19 L106,22 L108,22 L106,10 Z M103,12 L105,17 L103,17 Z" />
+    
+</vector>

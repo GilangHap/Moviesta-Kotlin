@@ -4,15 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.unsoed.moviesta.view.CustomBottomNavigation
 import com.unsoed.moviesta.view.GenreAdapter
 import com.unsoed.moviesta.model.Genre
+import com.unsoed.moviesta.base.BaseAuthActivity
 
-class GenreActivity : AppCompatActivity() {
+class GenreActivity : BaseAuthActivity() {
 
     private lateinit var toolbar: MaterialToolbar
     private lateinit var recyclerView: RecyclerView

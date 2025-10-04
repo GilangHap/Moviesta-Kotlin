@@ -15,4 +15,15 @@
     <!-- Card colors for dark mode -->
     <color name="card_background">#1E293B</color>
     <color name="card_surface">#334155</color>
+    
+    <!-- Material Design 3 Colors for Night Mode -->
+    <color name="outline">#938F99</color>
+    <color name="surface_variant">#49454F</color>
+    <color name="on_surface_variant">#CAC4D0</color>
+    <color name="on_surface">#E6E1E5</color>
+    
+    <!-- Logo Colors -->
+    <color name="moviesta_gradient_start">#FF7A00</color>
+    <color name="moviesta_gradient_end">#B91C1C</color>
+    <color name="moviesta_text">#F8FAFC</color>
 </resources>

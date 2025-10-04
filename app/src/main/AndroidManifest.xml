@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:name=".MoviestaApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -58,17 +61,74 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".ActorActivity" />
 
-        <!-- MainActivity menggunakan NoActionBar karena kita menggunakan Toolbar kustom -->
+        <!-- LoginActivity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- RegisterActivity -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".LoginActivity" />
+
+        <!-- Onboarding Activities -->
+        <activity
+            android:name=".OnboardingWelcomeActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" />
+            
+        <activity
+            android:name=".OnboardingGenreActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".OnboardingWelcomeActivity" />
+            
+        <activity
+            android:name=".OnboardingMovieActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".OnboardingGenreActivity" />
+
+        <!-- GenreListActivity -->
+        <activity
+            android:name=".GenreListActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Movie Genres"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- ActorListActivity -->
+        <activity
+            android:name=".ActorListActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Popular Actors"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- MainActivity menggunakan NoActionBar karena kita menggunakan Toolbar kustom -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <!-- WatchedMoviesActivity -->
+        <activity
+            android:name=".WatchedMoviesActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity" />
 
     </application>
 

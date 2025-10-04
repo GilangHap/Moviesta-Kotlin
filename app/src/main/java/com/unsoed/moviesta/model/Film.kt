@@ -45,7 +45,8 @@ data class Film(
     @SerializedName("title") val title: String?,
     @SerializedName("overview") val sinopsis: String?,
     @SerializedName("poster_path") val posterPath: String?,
-    @SerializedName("vote_average") val voteAverage: Double?
+    @SerializedName("vote_average") val voteAverage: Double?,
+    @SerializedName("release_date") val releaseDate: String?
 ) : Parcelable {
     // Computed property untuk rating (agar tidak break existing code)
     val rating: Double get() = voteAverage ?: 0.0

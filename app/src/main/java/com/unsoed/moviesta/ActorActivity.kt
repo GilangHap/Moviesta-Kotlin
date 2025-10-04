@@ -6,11 +6,11 @@ import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import com.unsoed.moviesta.base.BaseAuthActivity
 import com.unsoed.moviesta.model.Actor
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
@@ -21,7 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ActorActivity : AppCompatActivity() {
+class ActorActivity : BaseAuthActivity() {
 
     private lateinit var toolbar: MaterialToolbar
     private lateinit var searchView: SearchView

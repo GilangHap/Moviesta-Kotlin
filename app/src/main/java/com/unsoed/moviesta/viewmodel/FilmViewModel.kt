@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.unsoed.moviesta.model.Film
+import com.unsoed.moviesta.model.FilmDetail
+import com.unsoed.moviesta.model.Actor
 import com.unsoed.moviesta.model.Genre
 import com.unsoed.moviesta.view.Category
 import com.unsoed.moviesta.view.CategoryType
@@ -16,6 +18,15 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
     private val _films = MutableLiveData<List<Film>>()
     val films: LiveData<List<Film>> = _films
 
+    private val _upcomingFilms = MutableLiveData<List<Film>>()
+    val upcomingFilms: LiveData<List<Film>> = _upcomingFilms
+
+    private val _popularFilms = MutableLiveData<List<Film>>()
+    val popularFilms: LiveData<List<Film>> = _popularFilms
+
+    private val _genreBasedFilms = MutableLiveData<List<Film>>()
+    val genreBasedFilms: LiveData<List<Film>> = _genreBasedFilms
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -25,6 +36,12 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
     private val _genres = MutableLiveData<List<Genre>>()
     val genres: LiveData<List<Genre>> = _genres
 
+    private val _actors = MutableLiveData<List<Actor>>()
+    val actors: LiveData<List<Actor>> = _actors
+
+    private val _filmDetail = MutableLiveData<FilmDetail>()
+    val filmDetail: LiveData<FilmDetail> = _filmDetail
+
     private val _categories = MutableLiveData<List<Category>>()
     val categories: LiveData<List<Category>> = _categories
 
@@ -32,7 +49,12 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
     val selectedCategory: LiveData<Category> = _selectedCategory
 
     init {
+        loadInitialData()
+    }
+
+    private fun loadInitialData() {
         loadPopularFilms()
+        loadUpcomingFilms()
         loadGenres()
         setupCategories()
     }
@@ -42,10 +64,11 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
             _isLoading.value = true
             try {
                 val result = repository.getPopularFilms()
+                _popularFilms.value = result
                 _films.value = result
             } catch (e: Exception) {
                 _error.value = e.message ?: "An error occurred"
-                _films.value = emptyList()
+                _popularFilms.value = emptyList()
             } finally {
                 _isLoading.value = false
             }
@@ -69,15 +92,27 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
 
     fun loadUpcomingFilms() {
         viewModelScope.launch {
-            _isLoading.value = true
             try {
                 val result = repository.getUpcomingFilms()
-                _films.value = result
+                _upcomingFilms.value = result
             } catch (e: Exception) {
                 _error.value = e.message ?: "An error occurred"
-                _films.value = emptyList()
-            } finally {
-                _isLoading.value = false
+                _upcomingFilms.value = emptyList()
+            }
+        }
+    }
+
+    fun getMoviesByGenres(genreIds: List<Int>) {
+        viewModelScope.launch {
+            try {
+                // Get movies from first genre (can be expanded to combine multiple genres)
+                if (genreIds.isNotEmpty()) {
+                    val result = repository.getMoviesByGenre(genreIds.first())
+                    _genreBasedFilms.value = result
+                }
+            } catch (e: Exception) {
+                _error.value = e.message ?: "An error occurred"
+                _genreBasedFilms.value = emptyList()
             }
         }
     }
@@ -128,17 +163,6 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
                 _films.value = emptyList()
             } finally {
                 _isLoading.value = false
-            }
-        }
-    }
-
-    private fun loadGenres() {
-        viewModelScope.launch {
-            try {
-                val result = repository.getGenres()
-                _genres.value = result
-            } catch (e: Exception) {
-                _error.value = e.message ?: "Failed to load genres"
             }
         }
     }
@@ -210,5 +234,50 @@ class FilmViewModel(private val repository: FilmRepository) : ViewModel() {
         
         currentCategories.addAll(genreCategories)
         _categories.value = currentCategories
+    }
+
+    fun loadPopularActors() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val result = repository.getPopularActors()
+                _actors.value = result
+            } catch (e: Exception) {
+                _error.value = e.message ?: "An error occurred"
+                _actors.value = emptyList()
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun getFilmDetail(filmId: Int) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val result = repository.getFilmDetail(filmId)
+                _filmDetail.value = result
+            } catch (e: Exception) {
+                _error.value = e.message ?: "An error occurred"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun loadGenres() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val result = repository.getGenres()
+                _genres.value = result
+                addGenreCategories()
+            } catch (e: Exception) {
+                _error.value = e.message ?: "An error occurred"
+                _genres.value = emptyList()
+            } finally {
+                _isLoading.value = false
+            }
+        }
     }
 }

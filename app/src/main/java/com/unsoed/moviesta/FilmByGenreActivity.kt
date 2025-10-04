@@ -6,10 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
+import com.unsoed.moviesta.base.BaseAuthActivity
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.model.Genre
 import com.unsoed.moviesta.network.RetrofitClient
@@ -20,7 +20,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class FilmByGenreActivity : AppCompatActivity() {
+class FilmByGenreActivity : BaseAuthActivity() {
 
     companion object {
         const val EXTRA_GENRE_ID = "extra_genre_id"

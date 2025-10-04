@@ -2,5 +2,10 @@
     <string name="app_name">Moviesta</string>
 
     <string name="poster_film">Poster Film</string>
+    
+    <!-- Firebase Configuration -->
+    <!-- IMPORTANT: Replace with your actual Web Client ID from Firebase Console -->
+    <!-- Go to: Project Settings > General > Web API Key -->
+    <string name="default_web_client_id">164808964353-25gp8bkjg1g0lp7daq0jt6mu5g1cp7ic.apps.googleusercontent.com</string>
 
 </resources>
