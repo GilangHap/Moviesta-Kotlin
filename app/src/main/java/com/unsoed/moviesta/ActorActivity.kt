@@ -116,10 +116,12 @@ class ActorActivity : BaseAuthActivity() {
                     finish()
                 }
                 CustomBottomNavigation.NavigationTab.HISTORY -> {
-                    startActivity(Intent(this, WatchlistActivity::class.java))
+                    startActivity(Intent(this, HistoryActivity::class.java))
+                    finish()
                 }
                 CustomBottomNavigation.NavigationTab.PROFILE -> {
-                    // Navigate to Profile Activity (belum ada)
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
                 }
                 else -> {}
             }

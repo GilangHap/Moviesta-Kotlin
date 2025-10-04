@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selamat Datang di Moviesta!"
+        android:textColor="@color/primary"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -28,9 +29,10 @@
         android:id="@+id/tv_welcome_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ayuk personalisasi pengalaman Moviesta kamu dengan memilih genre favorit dan film yang sudah pernah kamu tonton."
+        android:text="Hayuuk personalisasi pengalaman Moviesta kamu dengan memilih genre favorit dan film yang sudah pernah kamu tonton."
         android:textSize="16sp"
         android:textAlignment="center"
+        android:textColor="@color/on_background"
         android:lineSpacingExtra="4dp"
         android:layout_marginBottom="48dp" />
 
@@ -40,6 +42,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="48dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"

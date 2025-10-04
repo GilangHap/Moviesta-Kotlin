@@ -23,6 +23,15 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <!-- SearchActivity -->
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Search Movies"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- WatchlistActivity -->
         <activity
             android:name=".WatchlistActivity"
@@ -37,6 +46,22 @@
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Movie Genres"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- HistoryActivity -->
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Watch History"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- ProfileActivity -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Profile"
             android:parentActivityName=".MainActivity" />
 
         <!-- FilmByGenreActivity -->

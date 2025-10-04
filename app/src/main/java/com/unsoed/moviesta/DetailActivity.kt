@@ -185,8 +185,8 @@ class DetailActivity : BaseAuthActivity() {
                     val tvRuntime: TextView = findViewById(R.id.tv_runtime)
                     val collapsingToolbar: CollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
-                    // Mengatur judul CollapsingToolbar
-                    collapsingToolbar.title = filmDetail.safeTitle
+                    // Mengatur judul CollapsingToolbar - DINONAKTIFKAN
+                    // collapsingToolbar.title = filmDetail.safeTitle
 
                     // Update UI dengan data dari API
                     tvTitle.text = filmDetail.safeTitle
@@ -252,7 +252,7 @@ class DetailActivity : BaseAuthActivity() {
                         val tvSinopsis: TextView = findViewById(R.id.tv_sinopsis_detail)
                         val collapsingToolbar: CollapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
-                        collapsingToolbar.title = fallbackFilm.safeTitle
+                        // collapsingToolbar.title = fallbackFilm.safeTitle - DINONAKTIFKAN
                         tvTitle.text = fallbackFilm.safeTitle
                         tvRating.text = String.format("%.1f", fallbackFilm.rating)
                         tvSinopsis.text = fallbackFilm.sinopsis ?: "Sinopsis tidak tersedia"

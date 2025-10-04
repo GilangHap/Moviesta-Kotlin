@@ -153,6 +153,8 @@ class MainActivity : BaseAuthActivity() {
         }
 
         // Genre and Actor navigation buttons
+        // TODO: Add these buttons to the layout if needed
+        /*
         findViewById<MaterialButton>(R.id.btn_genre).setOnClickListener {
             navigateToGenre()
         }
@@ -164,6 +166,7 @@ class MainActivity : BaseAuthActivity() {
         findViewById<MaterialButton>(R.id.btn_watched).setOnClickListener {
             navigateToWatchedMovies()
         }
+        */
     }
 
     private fun loadUserPreferencesAndData() {
@@ -276,8 +279,8 @@ class MainActivity : BaseAuthActivity() {
     }
 
     private fun openSearchActivity() {
-        // TODO: Create SearchActivity
-        android.widget.Toast.makeText(this, "Search feature coming soon!", android.widget.Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
     }
 
     private fun openFilterOptions() {
@@ -354,12 +357,12 @@ class MainActivity : BaseAuthActivity() {
     }
     
     private fun navigateToHistory() {
-        // TODO: Create HistoryActivity
-        android.widget.Toast.makeText(this, "History page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
     }
     
     private fun navigateToProfile() {
-        // TODO: Create ProfileActivity
-        android.widget.Toast.makeText(this, "Profile page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
     }
 }
