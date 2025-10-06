@@ -19,7 +19,8 @@ import com.unsoed.moviesta.view.WatchlistAdapter
 import com.unsoed.moviesta.view.CustomBottomNavigation
 import com.unsoed.moviesta.viewmodel.WatchlistViewModel
 
-class WatchlistActivity : BaseAuthActivity() {
+class
+WatchlistActivity : BaseAuthActivity() {
 
     private lateinit var watchlistViewModel: WatchlistViewModel
     private lateinit var watchlistAdapter: WatchlistAdapter
@@ -50,7 +51,6 @@ class WatchlistActivity : BaseAuthActivity() {
         setupViewModel()
         setupObservers()
         setupClickListeners()
-        setupBottomNavigation()
     }
 
     private fun setupViews() {
@@ -65,12 +65,14 @@ class WatchlistActivity : BaseAuthActivity() {
         btnSortDate = findViewById(R.id.btn_sort_date)
         btnSortTitle = findViewById(R.id.btn_sort_title)
         btnSortRating = findViewById(R.id.btn_sort_rating)
-        bottomNavigation = findViewById(R.id.bottom_navigation)
         
         // Setup toolbar
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        
+        // Set initial sort button state
+        updateSortButtonStates(btnSortDate)
     }
 
     private fun setupRecyclerView() {
@@ -82,6 +84,8 @@ class WatchlistActivity : BaseAuthActivity() {
             adapter = watchlistAdapter
             layoutManager = LinearLayoutManager(this@WatchlistActivity)
             setHasFixedSize(true)
+            // Enable nested scrolling to work properly with NestedScrollView
+            isNestedScrollingEnabled = false
         }
     }
 
@@ -141,14 +145,17 @@ class WatchlistActivity : BaseAuthActivity() {
         // Quick sort buttons
         btnSortDate.setOnClickListener {
             sortWatchlist(SortType.DATE_DESC)
+            updateSortButtonStates(btnSortDate)
         }
         
         btnSortTitle.setOnClickListener {
             sortWatchlist(SortType.TITLE_ASC)
+            updateSortButtonStates(btnSortTitle)
         }
         
         btnSortRating.setOnClickListener {
             sortWatchlist(SortType.RATING_DESC)
+            updateSortButtonStates(btnSortRating)
         }
     }
 
@@ -157,7 +164,12 @@ class WatchlistActivity : BaseAuthActivity() {
             showEmptyState()
         } else {
             showWatchlistContent()
-            watchlistAdapter.submitList(items)
+            watchlistAdapter.submitList(items) {
+                // Force RecyclerView to recalculate its height after data is set
+                recyclerView.post {
+                    recyclerView.requestLayout()
+                }
+            }
             updateStats(items)
             
             // Show quick actions if there are items
@@ -177,6 +189,11 @@ class WatchlistActivity : BaseAuthActivity() {
         recyclerView.visibility = View.VISIBLE
         layoutEmptyState.visibility = View.GONE
         layoutLoading.visibility = View.GONE
+        
+        // Force adapter to notify about data changes to ensure proper height calculation
+        recyclerView.post {
+            watchlistAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun showEmptyState() {
@@ -299,32 +316,32 @@ class WatchlistActivity : BaseAuthActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-    private fun setupBottomNavigation() {
-        // Set current tab to history since this is the watchlist
-        bottomNavigation.selectTab(CustomBottomNavigation.NavigationTab.HISTORY)
-        
-        bottomNavigation.setOnTabSelectedListener { tab ->
-            when (tab) {
-                CustomBottomNavigation.NavigationTab.GENRE -> {
-                    startActivity(Intent(this, GenreActivity::class.java))
-                    finish()
-                }
-                CustomBottomNavigation.NavigationTab.ACTOR -> {
-                    startActivity(Intent(this, ActorActivity::class.java))
-                    finish()
-                }
-                CustomBottomNavigation.NavigationTab.HOME -> {
-                    finish() // Go back to MainActivity
-                }
-                CustomBottomNavigation.NavigationTab.HISTORY -> {
-                    // Already on history/watchlist page
-                }
-                CustomBottomNavigation.NavigationTab.PROFILE -> {
-                    // TODO: Navigate to profile page
-                    android.widget.Toast.makeText(this, "Profile page coming soon!", android.widget.Toast.LENGTH_SHORT).show()
-                }
+    
+    private fun updateSortButtonStates(activeButton: MaterialButton) {
+        // Reset all buttons to inactive state
+        listOf(btnSortDate, btnSortTitle, btnSortRating).forEach { button ->
+            button.apply {
+                strokeColor = getColorStateList(R.color.text_secondary)
+                setTextColor(getColor(R.color.white))
+                iconTint = getColorStateList(R.color.white)
+                backgroundTintList = null
             }
+        }
+        
+        // Set active button state
+        activeButton.apply {
+            strokeColor = getColorStateList(R.color.primary)
+            setTextColor(getColor(R.color.primary))
+            iconTint = getColorStateList(R.color.primary)
+            backgroundTintList = getColorStateList(R.color.surface)
+        }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        // Force RecyclerView to recalculate its layout when activity resumes
+        recyclerView.post {
+            recyclerView.requestLayout()
         }
     }
 

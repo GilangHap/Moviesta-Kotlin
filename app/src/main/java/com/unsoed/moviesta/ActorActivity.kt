@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import com.unsoed.moviesta.base.BaseAuthActivity
 import com.unsoed.moviesta.model.Actor
 import com.unsoed.moviesta.network.RetrofitClient
@@ -22,8 +22,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ActorActivity : BaseAuthActivity() {
-
-    private lateinit var toolbar: MaterialToolbar
     private lateinit var searchView: SearchView
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
@@ -47,16 +45,12 @@ class ActorActivity : BaseAuthActivity() {
     }
 
     private fun setupViews() {
-        toolbar = findViewById(R.id.toolbar)
         searchView = findViewById(R.id.searchView)
         recyclerView = findViewById(R.id.recyclerViewActors)
         progressBar = findViewById(R.id.progressBar)
         layoutEmptyState = findViewById(R.id.layoutEmptyState)
         bottomNavigation = findViewById(R.id.bottom_navigation)
 
-        // Setup toolbar
-        toolbar.setNavigationOnClickListener { finish() }
-        toolbar.title = "Popular Actors"
 
         // Initialize repository
         repository = FilmRepository(RetrofitClient.instance)
@@ -130,7 +124,6 @@ class ActorActivity : BaseAuthActivity() {
 
     private fun loadPopularActors() {
         showLoading(true)
-        toolbar.title = "Popular Actors"
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -163,7 +156,6 @@ class ActorActivity : BaseAuthActivity() {
 
         showLoading(true)
         isSearchMode = true
-        toolbar.title = "Search: $query"
 
         CoroutineScope(Dispatchers.IO).launch {
             try {

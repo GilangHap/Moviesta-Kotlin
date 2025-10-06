@@ -20,7 +20,7 @@
             android:background="@color/background_primary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="@color/text_primary"
+            app:titleTextColor="@color/white"
             app:navigationIconTint="@color/text_primary" />
 
     </com.google.android.material.appbar.AppBarLayout>

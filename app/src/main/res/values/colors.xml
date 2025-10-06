@@ -7,6 +7,7 @@
     <color name="background">#100C08</color>
     <color name="surface">#F3F4F5</color>
     <color name="on_primary">#FFFFFF</color>
+    <color name="on_tertiary">#FFFFFF</color>
     <color name="on_background">#F3F4F5</color>
     <color name="on_surface">#100C08</color>
     
@@ -110,4 +111,7 @@
     <!-- Search and Grid Item Colors -->
     <color name="background_80">#CC100C08</color>
     <color name="rating_star">#FFD700</color>
+    
+    <!-- Material Design Outline Colors -->
+    <color name="outline_variant">#3E4142</color>
 </resources>

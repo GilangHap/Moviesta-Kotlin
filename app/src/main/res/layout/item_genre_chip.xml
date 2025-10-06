@@ -12,6 +12,7 @@
     app:chipBackgroundColor="@color/secondary"
     app:chipCornerRadius="20dp"
     app:chipMinHeight="40dp"
+    app:chipStrokeWidth="0dp"
     app:textStartPadding="16dp"
     app:textEndPadding="16dp"
     android:checkable="false"

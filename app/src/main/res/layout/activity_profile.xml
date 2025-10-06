@@ -7,109 +7,6 @@
     android:background="@color/background"
     tools:context=".ProfileActivity">
 
-    <!-- Modern AppBar with Gradient -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="@drawable/gradient_profile_header"
-        android:fitsSystemWindows="true"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/primary"
-            app:expandedTitleTextAppearance="@android:color/transparent">
-
-            <!-- Profile Header Content -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="24dp"
-                app:layout_collapseMode="parallax">
-
-                <!-- Profile Photo with Glow Effect -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    app:cardCornerRadius="60dp"
-                    app:cardElevation="12dp"
-                    app:strokeWidth="4dp"
-                    app:strokeColor="@android:color/white">
-
-                    <ImageView
-                        android:id="@+id/iv_profile_photo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:background="@color/surface_variant"
-                        tools:src="@tools:sample/avatars" />
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- User Name -->
-                <TextView
-                    android:id="@+id/tv_user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="John Doe"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="16dp"
-                    android:shadowColor="@android:color/black"
-                    android:shadowRadius="4"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    tools:text="John Doe" />
-
-                <!-- User Email -->
-                <TextView
-                    android:id="@+id/tv_user_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="john.doe@email.com"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="4dp"
-                    android:alpha="0.9"
-                    tools:text="john.doe@email.com" />
-
-                <!-- Join Date -->
-                <TextView
-                    android:id="@+id/tv_join_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Member since January 2024"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="8dp"
-                    android:alpha="0.8"
-                    tools:text="Member since January 2024" />
-
-                <!-- Account Type Badge -->
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/tv_account_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Verified Account"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="12dp"
-                    app:chipBackgroundColor="@color/success_primary"
-                    app:chipIcon="@drawable/ic_verified"
-                    app:chipIconTint="@android:color/white"
-                    tools:text="Verified Account" />
-
-            </LinearLayout>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <!-- Loading State -->
     <LinearLayout
         android:id="@+id/layout_loading"
@@ -142,69 +39,149 @@
         android:id="@+id/layout_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
-            <!-- Statistics Cards -->
+            <!-- Profile Header Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/gradient_profile_header"
+                android:padding="32dp"
+                android:gravity="center"
+                android:minHeight="320dp">
+
+                <!-- Profile Photo -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="3dp"
+                    app:strokeColor="#FF8A3D">
+
+                    <ImageView
+                        android:id="@+id/iv_profile_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@color/surface_variant"
+                        tools:src="@tools:sample/avatars" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- User Name -->
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GILANG HAPPY DWINUGROHO 1"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    tools:text="GILANG HAPPY DWINUGROHO 1" />
+
+                <!-- Bio/Quote -->
+                <TextView
+                    android:id="@+id/tv_user_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="I don't like to talk about myself.\nI prefer to talk about movies."
+                    android:textSize="14sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:alpha="0.9"
+                    android:lineSpacingExtra="2dp"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    tools:text="I don't like to talk about myself.\nI prefer to talk about movies." />
+
+                <!-- Edit Profile Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="12dp"
+                    app:cornerRadius="25dp"
+                    app:strokeColor="#FF8A3D"
+                    app:strokeWidth="2dp"
+                    app:backgroundTint="#66FF8A3D"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            </LinearLayout>
+
+            <!-- Stats Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="24dp">
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp">
 
                 <!-- Watched Movies Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_watched_movies"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="@color/accent_blue">
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/surface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="16dp"
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/ic_movie"
-                            app:tint="@android:color/white"
                             android:layout_marginBottom="8dp" />
 
                         <TextView
                             android:id="@+id/tv_watched_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="24sp"
+                            android:text="243"
+                            android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
-                            tools:text="42" />
+                            android:textColor="@color/text_primary"
+                            tools:text="243" />
 
                         <TextView
-                            android:id="@+id/tv_watched_movies_stat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Movies Watched"
+                            android:text="Watched Movies"
                             android:textSize="12sp"
-                            android:textColor="@android:color/white"
-                            android:alpha="0.9"
-                            android:gravity="center"
-                            tools:text="42 Movies Watched" />
+                            android:textColor="@color/text_secondary"
+                            android:gravity="center" />
 
                     </LinearLayout>
 
@@ -214,82 +191,90 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_favorite_genres"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginHorizontal="4dp"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="@color/accent_purple">
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/surface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="16dp"
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:src="@drawable/ic_star"
-                            app:tint="@android:color/white"
                             android:layout_marginBottom="8dp" />
 
                         <TextView
-                            android:id="@+id/tv_favorite_genres_stat"
+                            android:id="@+id/tv_favorite_genres_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0 Favorite Genres"
+                            android:text="3"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            tools:text="3" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Favorite Genres"
                             android:textSize="12sp"
-                            android:textColor="@android:color/white"
-                            android:alpha="0.9"
-                            android:gravity="center"
-                            tools:text="5 Favorite Genres" />
+                            android:textColor="@color/text_secondary"
+                            android:gravity="center" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Watch Time Card -->
+                <!-- Watchlist Card -->
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_watch_time"
+                    android:id="@+id/card_watchlist"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardCornerRadius="16dp"
-                    app:cardElevation="8dp"
-                    app:cardBackgroundColor="@color/warning_primary">
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/surface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="16dp"
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/ic_access_time"
-                            app:tint="@android:color/white"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_bookmark"
                             android:layout_marginBottom="8dp" />
 
                         <TextView
-                            android:id="@+id/tv_watch_time_stat"
+                            android:id="@+id/tv_watchlist_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0h Watch Time"
+                            android:text="51"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            tools:text="51" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Watchlist"
                             android:textSize="12sp"
-                            android:textColor="@android:color/white"
-                            android:alpha="0.9"
-                            android:gravity="center"
-                            tools:text="84h Watch Time" />
+                            android:textColor="@color/text_secondary" />
 
                     </LinearLayout>
 
@@ -297,218 +282,60 @@
 
             </LinearLayout>
 
-            <!-- Profile Details Section -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Quick Actions Section -->
+            <LinearLayout
+                android:id="@+id/layout_quick_actions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/surface">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <LinearLayout
+                <!-- Settings Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_settings"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_height="56dp"
+                    android:text="Settings"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    app:icon="@drawable/ic_settings"
+                    app:iconGravity="start"
+                    app:iconPadding="12dp"
+                    app:cornerRadius="12dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Profile Details"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="16dp" />
-
-                    <!-- Favorite Genres Row -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="12dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_category"
-                            app:tint="@color/accent_primary"
-                            android:layout_marginEnd="16dp" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Favorite Genres"
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/text_primary" />
-
-                            <TextView
-                                android:id="@+id/tv_favorite_genres"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Action, Sci-Fi, Comedy"
-                                android:textSize="12sp"
-                                android:textColor="@color/text_secondary"
-                                android:layout_marginTop="2dp"
-                                tools:text="Action, Sci-Fi, Comedy" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Action Buttons Section -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/surface">
-
-                <LinearLayout
+                <!-- Share Profile Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_share"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_height="56dp"
+                    android:text="Share Profile"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    app:icon="@drawable/ic_share"
+                    app:iconGravity="start"
+                    app:iconPadding="12dp"
+                    app:cornerRadius="12dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quick Actions"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="16dp" />
-
-                    <!-- Edit Profile Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_edit_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Edit Profile"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="8dp"
-                        app:icon="@drawable/ic_edit"
-                        app:iconGravity="start"
-                        app:iconPadding="12dp"
-                        app:cornerRadius="12dp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
-
-                    <!-- Watch History Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_watch_history"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Watch History"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="8dp"
-                        app:icon="@drawable/ic_history"
-                        app:iconGravity="start"
-                        app:iconPadding="12dp"
-                        app:cornerRadius="12dp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
-
-                    <!-- Settings Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_settings"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Settings"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="8dp"
-                        app:icon="@drawable/ic_settings"
-                        app:iconGravity="start"
-                        app:iconPadding="12dp"
-                        app:cornerRadius="12dp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
-
-                    <!-- Share Profile Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_share"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Share Profile"
-                        android:textSize="16sp"
-                        android:layout_marginBottom="16dp"
-                        app:icon="@drawable/ic_share"
-                        app:iconGravity="start"
-                        app:iconPadding="12dp"
-                        app:cornerRadius="12dp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
-
-                    <!-- Logout Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_logout"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:text="Logout"
-                        android:textSize="16sp"
-                        android:textColor="@color/error_primary"
-                        app:icon="@drawable/ic_logout"
-                        app:iconGravity="start"
-                        app:iconPadding="12dp"
-                        app:iconTint="@color/error_primary"
-                        app:strokeColor="@color/error_primary"
-                        app:cornerRadius="12dp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- App Info Section -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/surface">
-
-                <LinearLayout
+                <!-- Logout Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_logout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp"
-                    android:gravity="center">
+                    android:layout_height="56dp"
+                    android:text="Logout"
+                    android:textSize="16sp"
+                    android:textColor="@color/error_primary"
+                    android:layout_marginBottom="100dp"
+                    app:icon="@drawable/ic_logout"
+                    app:iconGravity="start"
+                    app:iconPadding="12dp"
+                    app:iconTint="@color/error_primary"
+                    app:strokeColor="@color/error_primary"
+                    app:cornerRadius="12dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_launcher_foreground"
-                        android:layout_marginBottom="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Moviesta"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/text_primary"
-                        android:layout_marginBottom="4dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Version 1.0.0"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_secondary" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -520,7 +347,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/transparent"
         android:elevation="8dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

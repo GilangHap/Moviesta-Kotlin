@@ -16,6 +16,7 @@ import com.google.android.material.button.MaterialButton
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.model.Genre
 import com.unsoed.moviesta.model.UserPreferences
+import com.unsoed.moviesta.model.WatchedMovieInfo
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
 import com.unsoed.moviesta.repository.UserPreferencesRepository
@@ -198,6 +199,21 @@ class OnboardingMovieActivity : AppCompatActivity() {
                     return@launch
                 }
                 
+                // Prepare watched movies detail
+                val watchedMoviesDetails = watchedMovies.map { movie ->
+                    WatchedMovieInfo(
+                        movieId = movie.id,
+                        title = movie.title ?: "Unknown Title",
+                        posterUrl = "https://image.tmdb.org/t/p/w500${movie.posterPath ?: ""}",
+                        genre = "", // Will be filled from movie details if needed
+                        releaseYear = movie.releaseDate?.substring(0, 4) ?: "",
+                        rating = movie.voteAverage ?: 0.0,
+                        watchedDate = System.currentTimeMillis(),
+                        notes = "Added during onboarding",
+                        personalRating = 0.0
+                    )
+                }
+                
                 Log.d(TAG, "User authenticated successfully: ${currentUser.uid}")
                 Log.d(TAG, "User email: ${currentUser.email}")
                 Log.d(TAG, "Selected genres: ${selectedGenres.size}, Watched movies: ${watchedMovies.size}")
@@ -206,6 +222,7 @@ class OnboardingMovieActivity : AppCompatActivity() {
                 val userPreferences = UserPreferences(
                     favoriteGenres = selectedGenres.map { it.id },
                     watchedMovies = watchedMovies.map { it.id },
+                    watchedMoviesDetails = watchedMoviesDetails,
                     isOnboardingCompleted = true
                 )
                 

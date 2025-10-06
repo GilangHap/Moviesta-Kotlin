@@ -40,14 +40,28 @@ class MovieGridAdapter(
         private val movieYear: TextView = itemView.findViewById(R.id.tv_year)
 
         fun bind(movie: Film) {
-            movieTitle.text = movie.title
+            movieTitle.text = movie.title ?: "Unknown Title"
             movieRating.text = "${String.format("%.1f", movie.voteAverage ?: 0.0)}"
             
-            // Extract year from release date
-            val year = movie.releaseDate?.substring(0, 4) ?: "N/A"
+            // Extract year from release date with proper validation
+            val year = try {
+                if (!movie.releaseDate.isNullOrEmpty() && movie.releaseDate.length >= 4) {
+                    movie.releaseDate.substring(0, 4)
+                } else {
+                    "N/A"
+                }
+            } catch (e: Exception) {
+                "N/A"
+            }
             movieYear.text = year
             
-            val posterUrl = "https://image.tmdb.org/t/p/w500${movie.posterPath}"
+            // Load poster image with proper validation
+            val posterUrl = if (!movie.posterPath.isNullOrEmpty()) {
+                "https://image.tmdb.org/t/p/w500${movie.posterPath}"
+            } else {
+                null
+            }
+            
             moviePoster.load(posterUrl) {
                 placeholder(R.drawable.ic_movie_placeholder)
                 error(R.drawable.ic_movie_placeholder)

@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme using Material Design with new palette -->
-    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/on_primary</item>
         <item name="colorSecondary">@color/secondary</item>
@@ -32,7 +32,7 @@
 
     <style name="ToolbarTitleStyle" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/on_background</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 </resources>

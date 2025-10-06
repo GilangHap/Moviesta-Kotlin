@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import com.unsoed.moviesta.view.CustomBottomNavigation
 import com.unsoed.moviesta.view.GenreAdapter
 import com.unsoed.moviesta.model.Genre
@@ -14,7 +14,6 @@ import com.unsoed.moviesta.base.BaseAuthActivity
 
 class GenreActivity : BaseAuthActivity() {
 
-    private lateinit var toolbar: MaterialToolbar
     private lateinit var recyclerView: RecyclerView
     private lateinit var genreAdapter: GenreAdapter
     private lateinit var bottomNavigation: CustomBottomNavigation
@@ -30,13 +29,9 @@ class GenreActivity : BaseAuthActivity() {
     }
 
     private fun setupViews() {
-        toolbar = findViewById(R.id.toolbar)
         recyclerView = findViewById(R.id.recyclerViewGenres)
         bottomNavigation = findViewById(R.id.bottom_navigation)
 
-        // Setup toolbar manually without ActionBar
-        toolbar.setNavigationOnClickListener { onBackPressed() }
-        toolbar.title = "Movie Genres"
     }
 
     private fun setupBottomNavigation() {

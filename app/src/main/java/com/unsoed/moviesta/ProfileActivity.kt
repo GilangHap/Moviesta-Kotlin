@@ -5,9 +5,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import coil.load
@@ -28,29 +28,27 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var bottomNavigation: CustomBottomNavigation
     
     // Views
+    private lateinit var layoutLoading: LinearLayout
+    private lateinit var layoutContent: androidx.core.widget.NestedScrollView
     private lateinit var ivProfilePhoto: ImageView
     private lateinit var tvUserName: TextView
-    private lateinit var tvUserEmail: TextView
-    private lateinit var tvJoinDate: TextView
-    private lateinit var tvWatchedCount: TextView
-    private lateinit var tvFavoriteGenres: TextView
-    private lateinit var tvAccountType: TextView
+    private lateinit var tvUserBio: TextView
     
-    // Stats Cards
+    // Stats
+    private lateinit var tvWatchedCount: TextView
+    private lateinit var tvFavoriteGenresCount: TextView
+    private lateinit var tvWatchlistCount: TextView
+    
+    // Cards
     private lateinit var cardWatchedMovies: MaterialCardView
     private lateinit var cardFavoriteGenres: MaterialCardView
-    private lateinit var cardWatchTime: MaterialCardView
+    private lateinit var cardWatchlist: MaterialCardView
     
-    // Action Buttons
+    // Buttons
     private lateinit var btnEditProfile: MaterialButton
-    private lateinit var btnWatchHistory: MaterialButton
     private lateinit var btnSettings: MaterialButton
     private lateinit var btnShare: MaterialButton
     private lateinit var btnLogout: MaterialButton
-    
-    // Loading and content views
-    private lateinit var layoutLoading: View
-    private lateinit var layoutContent: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,30 +62,31 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        // Loading and content layouts
+        layoutLoading = findViewById(R.id.layout_loading)
+        layoutContent = findViewById(R.id.layout_content)
+        
         // Profile info
         ivProfilePhoto = findViewById(R.id.iv_profile_photo)
         tvUserName = findViewById(R.id.tv_user_name)
-        tvUserEmail = findViewById(R.id.tv_user_email)
-        tvJoinDate = findViewById(R.id.tv_join_date)
+        tvUserBio = findViewById(R.id.tv_user_bio)
+        
+        // Stats
         tvWatchedCount = findViewById(R.id.tv_watched_count)
-        tvFavoriteGenres = findViewById(R.id.tv_favorite_genres)
-        tvAccountType = findViewById(R.id.tv_account_type)
+        tvFavoriteGenresCount = findViewById(R.id.tv_favorite_genres_count)
+        tvWatchlistCount = findViewById(R.id.tv_watchlist_count)
         
         // Stats cards
         cardWatchedMovies = findViewById(R.id.card_watched_movies)
         cardFavoriteGenres = findViewById(R.id.card_favorite_genres)
-        cardWatchTime = findViewById(R.id.card_watch_time)
+        cardWatchlist = findViewById(R.id.card_watchlist)
         
         // Action buttons
         btnEditProfile = findViewById(R.id.btn_edit_profile)
-        btnWatchHistory = findViewById(R.id.btn_watch_history)
         btnSettings = findViewById(R.id.btn_settings)
         btnShare = findViewById(R.id.btn_share)
         btnLogout = findViewById(R.id.btn_logout)
         
-        // Layout views
-        layoutLoading = findViewById(R.id.layout_loading)
-        layoutContent = findViewById(R.id.layout_content)
         bottomNavigation = findViewById(R.id.bottom_navigation)
     }
 
@@ -97,6 +96,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
+        bottomNavigation = findViewById(R.id.bottom_navigation)
         bottomNavigation.setOnTabSelectedListener { tab ->
             when (tab) {
                 CustomBottomNavigation.NavigationTab.GENRE -> {
@@ -126,8 +126,17 @@ class ProfileActivity : AppCompatActivity() {
             showEditProfileDialog()
         }
         
-        btnWatchHistory.setOnClickListener {
+        cardWatchedMovies.setOnClickListener {
             navigateToHistory()
+        }
+        
+        cardFavoriteGenres.setOnClickListener {
+            navigateToGenre()
+        }
+        
+        cardWatchlist.setOnClickListener {
+            // Could navigate to a dedicated watchlist activity in the future
+            Toast.makeText(this, "Watchlist feature coming soon", Toast.LENGTH_SHORT).show()
         }
         
         btnSettings.setOnClickListener {
@@ -140,14 +149,6 @@ class ProfileActivity : AppCompatActivity() {
         
         btnLogout.setOnClickListener {
             showLogoutDialog()
-        }
-        
-        cardWatchedMovies.setOnClickListener {
-            navigateToHistory()
-        }
-        
-        cardFavoriteGenres.setOnClickListener {
-            navigateToGenre()
         }
         
         ivProfilePhoto.setOnClickListener {
@@ -173,14 +174,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun loadBasicUserInfo(user: FirebaseUser) {
         tvUserName.text = user.displayName ?: "Movie Enthusiast"
-        tvUserEmail.text = user.email ?: "No email"
-        
-        // Format join date
-        val joinDate = user.metadata?.creationTimestamp?.let { timestamp ->
-            val date = java.util.Date(timestamp)
-            java.text.SimpleDateFormat("MMMM yyyy", java.util.Locale.getDefault()).format(date)
-        } ?: "Unknown"
-        tvJoinDate.text = "Member since $joinDate"
+        tvUserBio.text = "I don't like to talk about myself.\nI prefer to talk about movies."
         
         // Load profile photo
         val photoUrl = user.photoUrl
@@ -190,39 +184,27 @@ class ProfileActivity : AppCompatActivity() {
             transformations(CircleCropTransformation())
             crossfade(true)
         }
-        
-        // Set account type
-        tvAccountType.text = if (user.isEmailVerified) "Verified Account" else "Basic Account"
     }
 
     private fun loadUserStatistics() {
         lifecycleScope.launch {
             try {
-                val preferencesResult = userPreferencesRepository.getUserPreferences()
+                val result = userPreferencesRepository.getUserPreferences()
                 
-                if (preferencesResult.isSuccess) {
-                    val preferences = preferencesResult.getOrNull()
+                if (result.isSuccess) {
+                    val preferences = result.getOrNull()
                     
                     // Update watched movies count
                     val watchedCount = preferences?.watchedMoviesDetails?.size ?: 0
-                    tvWatchedCount.text = "$watchedCount"
-                    findViewById<TextView>(R.id.tv_watched_movies_stat).text = "$watchedCount Movies Watched"
+                    tvWatchedCount.text = watchedCount.toString()
                     
-                    // Update favorite genres
-                    val genreCount = preferences?.favoriteGenres?.size ?: 0
-                    findViewById<TextView>(R.id.tv_favorite_genres_stat).text = "$genreCount Favorite Genres"
+                    // Update watchlist count (use watched movies for now since watchlist field doesn't exist)
+                    val watchlistCount = 0 // No watchlist field available
+                    tvWatchlistCount.text = watchlistCount.toString()
                     
-                    // Calculate approximate watch time (assuming 2 hours per movie)
-                    val watchTimeHours = watchedCount * 2
-                    findViewById<TextView>(R.id.tv_watch_time_stat).text = "${watchTimeHours}h Watch Time"
-                    
-                    // Show favorite genres names
-                    val genreNames = preferences?.favoriteGenres?.take(3)?.joinToString(", ") ?: "Not set"
-                    tvFavoriteGenres.text = if (genreNames.isNotEmpty() && genreNames != "Not set") {
-                        genreNames
-                    } else {
-                        "Explore genres to set favorites"
-                    }
+                    // Update favorite genres count
+                    val favoriteGenresCount = preferences?.favoriteGenres?.size ?: 0
+                    tvFavoriteGenresCount.text = favoriteGenresCount.toString()
                 }
                 
                 hideLoading()

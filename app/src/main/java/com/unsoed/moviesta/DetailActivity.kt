@@ -22,8 +22,6 @@ import coil.load
 import com.unsoed.moviesta.base.BaseAuthActivity
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.unsoed.moviesta.model.Film
@@ -70,10 +68,9 @@ class DetailActivity : BaseAuthActivity() {
     
     // Watched Movies components
     private lateinit var watchedMoviesRepository: WatchedMoviesRepository
-    private lateinit var fabMarkWatched: ExtendedFloatingActionButton
-    private lateinit var fabAddWatchlist: FloatingActionButton
+    // Bottom Action Buttons
+    private lateinit var btnMarkWatched: MaterialButton
     private var isWatched = false
-    private var isFabExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -437,26 +434,14 @@ class DetailActivity : BaseAuthActivity() {
     }
     
     /**
-     * Setup Floating Action Button untuk menandai film sebagai sudah ditonton
+     * Setup Bottom Action Buttons untuk menandai film sebagai sudah ditonton
      */
     private fun setupWatchedMoviesFAB() {
-        fabMarkWatched = findViewById(R.id.fab_mark_watched)
-        fabAddWatchlist = findViewById(R.id.fab_add_watchlist)
+        btnMarkWatched = findViewById(R.id.btn_mark_watched)
         
-        // Set click listener untuk main FAB (Mark as Watched)
-        fabMarkWatched.setOnClickListener {
+        // Set click listener untuk Mark as Watched button
+        btnMarkWatched.setOnClickListener {
             handleWatchedToggle()
-        }
-        
-        // Set click listener untuk secondary FAB (Add to Watchlist)
-        fabAddWatchlist.setOnClickListener {
-            toggleWatchlist()
-        }
-        
-        // Set long click listener untuk expanding secondary FAB
-        fabMarkWatched.setOnLongClickListener {
-            toggleFABExpansion()
-            true
         }
     }
     
@@ -476,10 +461,8 @@ class DetailActivity : BaseAuthActivity() {
                         if (result.isSuccess && result.getOrDefault(false)) {
                             isWatched = false
                             updateWatchedFABState()
-                            showWatchedSnackbar("Removed from history list", false)
                             android.util.Log.d("DetailActivity", "Successfully removed from watched list")
                         } else {
-                            showWatchedSnackbar("Failed to remove from history list", true)
                             android.util.Log.e("DetailActivity", "Failed to remove from watched list")
                         }
                     } else {
@@ -489,13 +472,11 @@ class DetailActivity : BaseAuthActivity() {
                         if (result.isSuccess) {
                             isWatched = true
                             updateWatchedFABState()
-                            showWatchedSnackbar("Added to history list! 🎉", false)
                             animateWatchedSuccess()
                             triggerHapticFeedback()
                             android.util.Log.d("DetailActivity", "Successfully added to watched list")
                         } else {
                             val error = result.exceptionOrNull()
-                            showWatchedSnackbar("Failed to add to history list", true)
                             android.util.Log.e("DetailActivity", "Failed to add to watched list", error)
                         }
                     }
@@ -538,51 +519,21 @@ class DetailActivity : BaseAuthActivity() {
     }
     
     /**
-     * Update FAB appearance based on watched status
+     * Update Button appearance based on watched status
      */
     private fun updateWatchedFABState() {
         if (isWatched) {
-            fabMarkWatched.text = "Watched ✓"
-            fabMarkWatched.setIconResource(R.drawable.ic_eye_check)
-            fabMarkWatched.backgroundTintList = getColorStateList(R.color.fab_watched_checked)
+            btnMarkWatched.text = "Watched ✓"
+            btnMarkWatched.setIconResource(R.drawable.ic_eye_check)
+            btnMarkWatched.backgroundTintList = getColorStateList(R.color.tertiary)
+            btnMarkWatched.setTextColor(getColorStateList(R.color.on_tertiary))
+            btnMarkWatched.iconTint = getColorStateList(R.color.on_tertiary)
         } else {
-            fabMarkWatched.text = "Mark as Watched"
-            fabMarkWatched.setIconResource(R.drawable.ic_eye_add)
-            fabMarkWatched.backgroundTintList = getColorStateList(R.color.accent_blue)
-        }
-    }
-    
-    /**
-     * Toggle FAB expansion to show secondary actions
-     */
-    private fun toggleFABExpansion() {
-        isFabExpanded = !isFabExpanded
-        
-        if (isFabExpanded) {
-            // Show secondary FAB with advanced animation
-            fabAddWatchlist.visibility = View.VISIBLE
-            val expandAnimation = AnimationUtils.loadAnimation(this, R.anim.fab_expand_animation)
-            fabAddWatchlist.startAnimation(expandAnimation)
-            
-            fabAddWatchlist.animate()
-                .alpha(1f)
-                .scaleX(1f)
-                .scaleY(1f)
-                .setDuration(300)
-                .setInterpolator(AccelerateDecelerateInterpolator())
-                .start()
-        } else {
-            // Hide secondary FAB with animation
-            fabAddWatchlist.animate()
-                .alpha(0f)
-                .scaleX(0.8f)
-                .scaleY(0.8f)
-                .setDuration(200)
-                .setInterpolator(AccelerateDecelerateInterpolator())
-                .withEndAction {
-                    fabAddWatchlist.visibility = View.GONE
-                }
-                .start()
+            btnMarkWatched.text = "Mark as Watched"
+            btnMarkWatched.setIconResource(R.drawable.ic_eye_add)
+            btnMarkWatched.backgroundTintList = getColorStateList(R.color.primary)
+            btnMarkWatched.setTextColor(getColorStateList(R.color.on_primary))
+            btnMarkWatched.iconTint = getColorStateList(R.color.on_primary)
         }
     }
     
@@ -590,30 +541,26 @@ class DetailActivity : BaseAuthActivity() {
      * Animate success feedback when movie is marked as watched
      */
     private fun animateWatchedSuccess() {
-        // Advanced success animation
-        val successAnimation = AnimationUtils.loadAnimation(this, R.anim.fab_success_animation)
-        fabMarkWatched.startAnimation(successAnimation)
-        
         // Scale animation for success feedback
-        val scaleX = ObjectAnimator.ofFloat(fabMarkWatched, "scaleX", 1f, 1.3f, 1f)
-        val scaleY = ObjectAnimator.ofFloat(fabMarkWatched, "scaleY", 1f, 1.3f, 1f)
+        val scaleX = ObjectAnimator.ofFloat(btnMarkWatched, "scaleX", 1f, 1.1f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(btnMarkWatched, "scaleY", 1f, 1.1f, 1f)
         
-        scaleX.duration = 800
-        scaleY.duration = 800
+        scaleX.duration = 400
+        scaleY.duration = 400
         scaleX.interpolator = AccelerateDecelerateInterpolator()
         scaleY.interpolator = AccelerateDecelerateInterpolator()
         
         scaleX.start()
         scaleY.start()
         
-        // Pulse effect
-        fabMarkWatched.animate()
-            .translationZ(24f)
-            .setDuration(300)
+        // Subtle elevation change
+        btnMarkWatched.animate()
+            .translationZ(8f)
+            .setDuration(200)
             .withEndAction {
-                fabMarkWatched.animate()
-                    .translationZ(12f)
-                    .setDuration(300)
+                btnMarkWatched.animate()
+                    .translationZ(2f)
+                    .setDuration(200)
                     .start()
             }
             .start()
@@ -623,7 +570,7 @@ class DetailActivity : BaseAuthActivity() {
      * Show snackbar for watched movie actions
      */
     private fun showWatchedSnackbar(message: String, isError: Boolean = false) {
-        val snackbar = Snackbar.make(fabMarkWatched, message, Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(btnMarkWatched, message, Snackbar.LENGTH_SHORT)
         if (isError) {
             snackbar.setBackgroundTint(getColor(R.color.error_color))
         } else {

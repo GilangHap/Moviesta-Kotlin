@@ -56,7 +56,7 @@
             app:boxCornerRadiusTopStart="12dp"
             app:boxStrokeColor="@color/primary"
             app:hintTextColor="@color/onSurface"
-            app:startIconDrawable="@drawable/ic_profile"
+            app:startIconDrawable="@drawable/ic_person_20dp"
             app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -83,7 +83,7 @@
             app:boxCornerRadiusTopStart="12dp"
             app:boxStrokeColor="@color/primary"
             app:hintTextColor="@color/onSurface"
-            app:startIconDrawable="@drawable/ic_profile"
+            app:startIconDrawable="@drawable/ic_email_20dp"
             app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -112,7 +112,7 @@
             app:endIconMode="password_toggle"
             app:endIconTint="@color/primary"
             app:hintTextColor="@color/onSurface"
-            app:startIconDrawable="@drawable/ic_bookmark"
+            app:startIconDrawable="@drawable/ic_password_20dp"
             app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -141,7 +141,7 @@
             app:endIconMode="password_toggle"
             app:endIconTint="@color/primary"
             app:hintTextColor="@color/onSurface"
-            app:startIconDrawable="@drawable/ic_bookmark"
+            app:startIconDrawable="@drawable/ic_password_20dp"
             app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText

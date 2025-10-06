@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/background_primary"
     tools:context=".FilmsByActorActivity">
 
     <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
-        app:elevation="4dp">
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary"
-            app:titleTextColor="@color/on_primary"
-            app:navigationIcon="@drawable/ic_arrow_back"
-            app:navigationIconTint="@color/on_primary"
-            tools:title="Films by Robert Downey Jr." />
+            android:background="@color/background_primary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/white"
+            app:navigationIconTint="@color/white"
+            app:titleTextAppearance="@style/ToolbarTitleStyle" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -91,12 +92,36 @@
                             android:id="@+id/tv_known_for"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:textSize="16sp"
+                            android:layout_marginTop="4dp"
+                            android:textSize="14sp"
                             android:textColor="@color/secondary"
                             android:textStyle="normal"
                             android:fontFamily="sans-serif"
                             tools:text="Acting" />
+
+                        <!-- Birthday -->
+                        <TextView
+                            android:id="@+id/tv_birthday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/on_surface_variant"
+                            android:fontFamily="sans-serif"
+                            android:visibility="gone"
+                            tools:text="Born: April 4, 1965" />
+
+                        <!-- Place of Birth -->
+                        <TextView
+                            android:id="@+id/tv_place_of_birth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/on_surface_variant"
+                            android:fontFamily="sans-serif"
+                            android:visibility="gone"
+                            tools:text="New York City, NY, USA" />
 
                         <!-- Films Label -->
                         <TextView
@@ -110,6 +135,48 @@
                             android:alpha="0.8" />
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Biography Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_biography"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/surface"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/primary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Biography"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/on_surface"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tv_biography"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/on_surface"
+                        android:lineSpacingExtra="2dp"
+                        android:justificationMode="inter_word"
+                        tools:text="Robert John Downey Jr. is an American actor and producer..." />
 
                 </LinearLayout>
 
@@ -135,7 +202,7 @@
                 android:paddingBottom="16dp"
                 tools:itemCount="6"
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/item_film"
+                tools:listitem="@layout/item_movie_grid"
                 tools:spanCount="2" />
 
             <!-- Empty State -->

@@ -6,15 +6,15 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.MaterialToolbar
 import com.unsoed.moviesta.base.BaseAuthActivity
 import com.unsoed.moviesta.model.Film
 import com.unsoed.moviesta.model.Genre
 import com.unsoed.moviesta.network.RetrofitClient
 import com.unsoed.moviesta.repository.FilmRepository
-import com.unsoed.moviesta.view.FilmAdapter
+import com.unsoed.moviesta.adapter.MovieGridAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,11 +27,11 @@ class FilmByGenreActivity : BaseAuthActivity() {
         const val EXTRA_GENRE_NAME = "extra_genre_name"
     }
 
-    private lateinit var toolbar: MaterialToolbar
+    private lateinit var toolbar: Toolbar
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var layoutEmptyState: LinearLayout
-    private lateinit var filmAdapter: FilmAdapter
+    private lateinit var movieAdapter: MovieGridAdapter
     private lateinit var repository: FilmRepository
 
     private var genreId: Int = 0
@@ -58,20 +58,33 @@ class FilmByGenreActivity : BaseAuthActivity() {
         progressBar = findViewById(R.id.progressBar)
         layoutEmptyState = findViewById(R.id.tvEmptyState)
 
-        // Setup toolbar
+        // Setup toolbar with back button
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+            title = "Film $genreName"
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+        
         toolbar.setNavigationOnClickListener { finish() }
-        toolbar.title = "Film $genreName"
 
         // Initialize repository
         repository = FilmRepository(RetrofitClient.instance)
     }
 
     private fun setupRecyclerView() {
-        filmAdapter = FilmAdapter(emptyList())
+        movieAdapter = MovieGridAdapter { movie ->
+            // Navigate to movie detail
+            val intent = Intent(this, DetailActivity::class.java).apply {
+                putExtra(DetailActivity.EXTRA_FILM, movie)
+            }
+            startActivity(intent)
+        }
 
         recyclerView.apply {
             layoutManager = GridLayoutManager(this@FilmByGenreActivity, 2)
-            adapter = filmAdapter
+            adapter = movieAdapter
         }
     }
 
@@ -85,7 +98,7 @@ class FilmByGenreActivity : BaseAuthActivity() {
                 withContext(Dispatchers.Main) {
                     showLoading(false)
                     if (films.isNotEmpty()) {
-                        filmAdapter.updateFilms(films)
+                        movieAdapter.updateMovies(films)
                         showEmptyState(false)
                     } else {
                         showEmptyState(true)

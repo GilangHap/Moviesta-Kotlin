@@ -2,6 +2,8 @@ package com.unsoed.moviesta
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -59,13 +61,31 @@ class HistoryActivity : AppCompatActivity() {
     private fun setupToolbar() {
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
+            title = "Watch History"
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-            title = "Watch History"
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
-        
-        toolbar.setNavigationOnClickListener {
-            onBackPressed()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_history, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.action_watchlist -> {
+                // Navigate to watchlist
+                val intent = Intent(this, WatchlistActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
