@@ -12,6 +12,8 @@ data class UserPreferences(
     var favoriteGenres: List<Int> = emptyList(), // Genre IDs
     var watchedMovies: List<Int> = emptyList(), // Movie IDs (for quick check)
     var watchedMoviesDetails: List<WatchedMovieInfo> = emptyList(), // Detailed info
+    var watchlistMovies: List<Int> = emptyList(), // Watchlist Movie IDs (for quick check)
+    var watchlistMoviesDetails: List<WatchlistMovieInfo> = emptyList(), // Detailed watchlist info
     @PropertyName("onboardingCompleted")
     var isOnboardingCompleted: Boolean = false,
     var createdAt: Long = System.currentTimeMillis(),
@@ -30,6 +32,72 @@ data class WatchedMovieInfo(
     val notes: String = "",
     val personalRating: Double = 0.0
 ) : Parcelable
+
+@Parcelize
+data class WatchlistMovieInfo(
+    val movieId: Int = 0,
+    val title: String = "",
+    val overview: String = "",
+    val posterPath: String = "",
+    val voteAverage: Double = 0.0,
+    val releaseDate: String = "",
+    val addedDate: Long = System.currentTimeMillis()
+) : Parcelable {
+    
+    companion object {
+        // Convert WatchlistItem to WatchlistMovieInfo
+        fun fromWatchlistItem(watchlistItem: WatchlistItem): WatchlistMovieInfo {
+            return WatchlistMovieInfo(
+                movieId = watchlistItem.id,
+                title = watchlistItem.title,
+                overview = watchlistItem.overview ?: "",
+                posterPath = watchlistItem.posterPath ?: "",
+                voteAverage = watchlistItem.voteAverage,
+                releaseDate = watchlistItem.releaseDate ?: "",
+                addedDate = watchlistItem.addedDate
+            )
+        }
+        
+        // Convert Film to WatchlistMovieInfo
+        fun fromFilm(film: Film): WatchlistMovieInfo {
+            return WatchlistMovieInfo(
+                movieId = film.id,
+                title = film.safeTitle,
+                overview = film.sinopsis ?: "",
+                posterPath = film.posterPath ?: "",
+                voteAverage = film.rating,
+                releaseDate = "",
+                addedDate = System.currentTimeMillis()
+            )
+        }
+        
+        // Convert FilmDetail to WatchlistMovieInfo
+        fun fromFilmDetail(filmDetail: FilmDetail): WatchlistMovieInfo {
+            return WatchlistMovieInfo(
+                movieId = filmDetail.id,
+                title = filmDetail.safeTitle,
+                overview = filmDetail.overview ?: "",
+                posterPath = filmDetail.posterPath ?: "",
+                voteAverage = filmDetail.rating,
+                releaseDate = filmDetail.releaseDate ?: "",
+                addedDate = System.currentTimeMillis()
+            )
+        }
+    }
+    
+    // Convert to WatchlistItem for compatibility
+    fun toWatchlistItem(): WatchlistItem {
+        return WatchlistItem(
+            id = movieId,
+            title = title,
+            overview = overview,
+            posterPath = posterPath,
+            voteAverage = voteAverage,
+            releaseDate = releaseDate,
+            addedDate = addedDate
+        )
+    }
+}
 
 @Parcelize
 data class OnboardingData(
